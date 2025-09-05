@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <h1>Job Application: Senior Web Developer</h1>
+        <p>Thank you for your interest in joining our team. Please fill out the application form below:</p>
+        <hr>
+
+        <h2>Personal Information</h2>
+        <label for="fullName">Full Name:</label><br>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. Pankaj Kumar" required><br><br>
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" placeholder="e.g. 7aBt2@example.com" required><br><br>
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="e.g. 123-456-7890" required><br><br>
+        <label for="LinkedIn">LinkedIn Profile URL:</label><br>
+        <input type="url" id="LinkedIn" name="LinkedIn" placeholder="e.g. https://www.linkedin.com/in/username" required><br><br>
+        <hr>
+
+        <h2>Professional Experience</h2>
+        <p>Upload your resume(PDF or DOCX):</p>
+        <input type="file" id="resume" name="resume" accept=".pdf, .docx" required><br><br>
+
+        <p>Years of Professional Experience:</p>
+        <input type="number" id="yearsExperience" name="yearsExperience" min="0" placeholder="e.g. 2" required><br>
+        
+        
+        <br>
+        
+        <label for="Cover Letter">Cover Letter:</label>
+        <br>
+        <textarea name="Cover Letter" id="Cover Letter" cols="20" rows="10" required></textarea>
+
+        <p>Earliest Possible Start Date:</p>
+
+
+        <input type="date" id="startDate" name="startDate" required><br><br>
+        <hr>
+        <h2>Skills & Availability</h2>
+        <p>Primary Skillset(Choose one):</p>
+        <select id="primarySkill" name="primarySkill" required>
+            <option value="">--Select--</option>
+            <option value="frontend">Front-End Development</option>
+            <option value="backend">Back-End Development</option>
+            <option value="fullstack">Full-Stack Development</option>
+        </select><br>
+
+        <p>Additional Skills(Select all that apply):</p>
+        <input type="checkbox" id="React" name="skills" value="React">
+        <label for="React">React</label><br>
+        <input type="checkbox" id="Nodejs" name="skills" value="Node.js">
+        <label for="Nodejs">Node.js</label><br>
+        <input type="checkbox" id="Database Management" name="skills" value="Database Management">
+        <label for="Database Management">Database Management</label><br>
+        <input type="checkbox" id="Cloud/DevOps" name="skills" value="Cloud/DevOps">
+        <label for="Cloud/DevOps">Cloud/DevOps</label><br>
+
+
+        <p>Preferred Work type:(Choose one):</p>
+        <select id="primarySkill" name="primarySkill" required>
+            <option value="">--Select--</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Contract">Contract</option>
+        </select><br>
+        
+        <hr>
+        <h2>Final Confirmation</h2>
+        <p>I am legally authorized to work in the this country.</p>
+        <input type="checkbox" id="legalAuthorization" name="legalAuthorization" required>
+        
+        <br>
+        <p>How did you hear about us?</p>
+        <label for="LinkedIn">LinkedIn</label><input type="checkbox" id="LinkedIn" name="LinkedIn"></label>
+
+        <label for="Indeed">Indeed</label><input type="checkbox" id="Indeed" name="Indeed"></label>
+
+        <label for="Google">Google</label><input type="checkbox" id="Google" name="Google"></label> <br><br>
+        <input type="submit" value="Submit Application">
+        <input type="reset" value="Clear Form">
+    </form>
+</body>
+</html>
