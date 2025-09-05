@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>University Rregistration Form</h1>
+    <p>Please fill out the form below:</p>
+    <hr>
+        <h2>Personal Information</h2>
+        <label for="Firstname">First Name:</label>
+        <input type="text" id="Firstname" name="Firstname"  placeholder="e.g Pankaj" required>
+        <br><br>
+
+        <label for="Surname">Last Name:</label>
+        <input type="text" id="Surname" name="Surname"  placeholder="e.g Kumar" required>
+        <br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <br><br>
+
+        <h3>Gender</h3>
+        <label for="gender">Gender:</label>
+        <br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">FeMale</label>
+        <br>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+        <br><br>
+
+
+        <h3>Upload Your photo</h3>
+
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <hr>
+
+
+
+
+
+        <h3>Contact Information</h3>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email"  placeholder="e.g Pankaj@example.com" required>
+        <br><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone"  placeholder="e.g 123-456-7890" required>
+        
+        <br><br>
+        <label for="Address">Mailing Address:</label>
+        <br>
+        <textarea name="Address" id="Address" cols="20" rows="10" required></textarea>
+
+        <br><br>
+        <hr>
+
+        <h2>Academic Information</h2>
+        <label for="course">Select Course:</label>
+        <select id="course" name="course" required>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Aerospace Engineering">Aerospace Engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Biotechnology">Biotechnology</option>
+        </select>
+        <br>
+
+        <h3>Extra Curricular Activities</h3>
+        <label for="activities">List your activities:</label>
+        <br>
+        <input type="checkbox" id="sports" name="activities" value="sports">
+        <label for="sports">Sports</label>
+        <br>
+        <input type="checkbox" id="music" name="activities" value="music">
+        <label for="music">Music</label>
+        <br>
+        <input type="checkbox" id="arts" name="activities" value="arts">
+        <label for="arts">Arts</label>
+        <br>
+        <input type="checkbox" id="volunteering" name="activities" value="volunteering">
+        <label for="volunteering">Volunteering</label>
+        <hr>
+
+        <h2>Create Your Account</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+
+        <h3>Security Question</h3>
+        <label for="Question">Question:</label>
+        <select id="Question" name="Question" required>
+            <option value="What is your favorite subject?">What is your favorite subject?</option>
+            <option value="What is your pet's name?">What is your pet's name?</option>
+            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+            <option value="What was the name of your first school?">What was the name of your first school?</option>
+            <option value="What is your favorite book?">What is your favorite book?</option>
+            <option value="What is your favorite movie?">What is your favorite movie?</option>
+            <option value="What is your favorite color?">What is your favorite color?</option>
+        </select>
+
+        <br><br>
+        
+        <label for="Answer">Answer:</label>
+        <input type="text" id="Answer" name="Answer" required>   
+        <br><br>
+
+        <label for="check"> I agree to the terms and conditions</label>
+        <input type="checkbox" id="check" name="check" required>
+
+        <hr>
+
+        <input type="Submit" value="Register">
+        <button type="reset">Clear Form</button>
+
+    </form>
+</body>
+</html>
