@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7 Homework</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 2️⃣ Internal CSS Method */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <h1>Welcome to My Styled Page</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>My Favorite Things</h2>
+            <p>Here are some of my favorite things, styled to meet the homework requirements. I've used different colors and fonts to show what's possible with CSS.</p>
+
+            <h3>Foods I Love</h3>
+            <ul>
+                <li style="color: #FF5733;">Pizza</li>
+                <li>Tacos</li>
+                <li>Sushi</li>
+            </ul>
+
+            <h3>Places I've Visited</h3>
+            <ol>
+                <li>Tokyo</li>
+                <li style="color: rgb(0, 128, 128);">New York</li>
+                <li>Paris</li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section id="blog-section">
+            <h2 id="blog-title">My Mini Blog 📰</h2>
+
+            <div class="blog-post post-one">
+                <h3>Exploring CSS Properties</h3>
+                <p>Today, I learned about the box model and how it affects element layouts. It's a fundamental concept in web development.</p>
+            </div>
+
+            <div class="blog-post post-two">
+                <h3>Styling with Class & ID Selectors</h3>
+                <p>Class selectors are great for applying the same style to multiple elements, while ID selectors are perfect for unique, one-of-a-kind elements.</p>
+            </div>
+
+            <div class="blog-post post-three">
+                <h3>Adding Images and Effects</h3>
+                <p>I also figured out how to add an image and give it a cool border and shadow. It makes the page look so much more professional!</p>
+                <img id="styled-image" src="data:image/jpeg;base64,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" alt="A placeholder image with CSS effects.">
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: rgba(0, 0, 0, 0.7); color: white; padding: 20px; text-align: center;">
+        <p>&copy; 2025 My Day 7 Homework</p>
+    </footer>
+
+    <script>
+        // Toggles dark mode.
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>

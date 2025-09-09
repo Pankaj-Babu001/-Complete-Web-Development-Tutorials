@@ -1,0 +1,76 @@
+/* 2️⃣ External CSS Method */
+
+/* Global styles */
+body {
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* 4️⃣ Applying two different fonts */
+h1, #blog-title {
+    font-family: 'Playfair Display', serif; /* Google Font */
+    font-weight: 700;
+    font-size: 3em;
+    color: #333;
+}
+
+#blog-title {
+    font-style: italic; /* 4️⃣ Font style */
+}
+
+p, ul, ol, li {
+    font-family: 'Open Sans', sans-serif; /* A second font */
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+/* 🎯 CSS Challenge: Blog post styles */
+.blog-post {
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 🖼️ Shadow effect */
+}
+
+/* 🎨 Class selectors for repeating styles */
+.post-one {
+    background-color: #4f0b80;
+}
+
+.post-two {
+    background-color: #292604de;
+}
+
+.post-three {
+    background-color: rgba(53, 33, 7, 0.183); /* 3️⃣ RGBA color */
+}
+
+/* 🎨 ID selector for unique element */
+#blog-title {
+    color: #3b923edd;
+    text-align: center;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+/* 🖼️ Styled image with border and shadow */
+#styled-image {
+    width: 100%;
+    max-width: 300px;
+    border: 5px solid #555555f0; /* 🖼️ Border effect */
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.313); /* 🖼️ Another shadow effect */
+}
+
+/* 🌙 Dark mode styles (extra flair) */
+.dark-mode h1,
+.dark-mode #blog-title,
+.dark-mode #blog-section h3,
+.dark-mode footer {
+    color: #2c9c06ad;
+}
+
+.dark-mode .blog-post {
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.735);
+}

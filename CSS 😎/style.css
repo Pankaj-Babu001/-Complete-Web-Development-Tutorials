@@ -1,0 +1,150 @@
+/* h1 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(55, 10, 216);
+}
+
+h2 {
+    background-color: white;
+    color: rgb(216, 10, 155);
+}
+
+ul {
+    background-color: white;
+    color: rgb(10, 216, 164);
+} */
+
+
+
+/* id base section # base selector */
+/* body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+#exercises {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#diet {
+    background-color: lightgreen;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+} */
+
+
+
+/* class base section . base selector */
+/* body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+.exercises {
+    background-color: rgb(43, 116, 226);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.diet {
+    background-color: lightgreen;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+} */
+
+
+/* grouping selector section , base selector */
+/* 
+h1, .exercises, .diet ,.exercises, 
+.diet {
+    background-color: rgb(195, 20, 183);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+} 
+
+h1, .exercise-list, h2.exercise-list {
+    background-color: rgba(80, 3, 139, 0.096);
+
+}
+
+h1, .non-vegetarian, h2.non-vegetarian {
+    background-color: rgba(33, 3, 139, 0);
+
+} */
+/* 
+h1, .exercise-list, h2.exercise-list {
+    background-color: rgba(3, 15, 79, 0.361);
+
+} */
+
+h1{
+    font-size: 50px;
+}
+
+ul{
+    font-size: 20px;
+}
+
+li{
+    font-size: 20px;
+}
+
+.non-vegetarian{
+    background-color: rgba(255, 0, 0, 0.205);
+}
+
+.vegetarian{
+    background-color: rgba(0, 255, 0, 0.205);
+}
+
+.exercise-list{
+    background-color: rgba(0, 0, 255, 0.205);
+}
+#diet-list{
+    background-color: rgba(255, 255, 0, 0.205);
+}
+
+ #exercise-list{
+    background-color: rgba(255, 0, 255, 0.205);
+} 
+/* 
+h2{
+    font-size: 2vw;
+}
+
+li{
+    font-size: 1.5vw;
+} */
+
+li:hover{
+    background-color: rgba(128, 128, 128, 0.205);
+    cursor: pointer;
+}
+.imperial-script-regular {
+  font-family: "Imperial Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ballet-opsz {
+  font-family: "Ballet", serif;
+  font-weight: 400;
+  font-style: normal;
+}
