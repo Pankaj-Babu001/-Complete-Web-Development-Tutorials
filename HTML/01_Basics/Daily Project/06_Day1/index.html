@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Webpage</title>
+    <!-- Use Tailwind CSS via CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the body and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        /* Custom spinner for loading state */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4f46e5;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">CompanyCo</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="text-gray-600 hover:text-indigo-600 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">About</a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-indigo-600 transition duration-300">Services</a></li>
+                    <li><a href="#assistant" class="text-gray-600 hover:text-indigo-600 transition duration-300">Assistant</a></li>
+                    <li><a href="#image-gen" class="text-gray-600 hover:text-indigo-600 transition duration-300">Image Gen</a></li>
+                    <li><a href="#docs" class="text-gray-600 hover:text-indigo-600 transition duration-300">Docs</a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="py-12">
+
+        <!-- Hero Section -->
+        <section id="home" class="text-center py-20 bg-gray-50 rounded-lg mx-4 md:mx-auto max-w-7xl">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                    Discover a World of Possibilities
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                    We help you build beautiful, responsive, and high-performing web experiences.
+                </p>
+                <a href="#services" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                    Explore Our Services
+                </a>
+            </div>
+        </section>
+
+        <!-- Image Placeholder Section -->
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div class="bg-gray-200 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
+                    <img src="https://placehold.co/1200x600/1e293b/d1d5db?text=Modern+Design" alt="Placeholder image for a modern design" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/d1d5db/1e293b?text=Image+Not+Found';">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-12 bg-white rounded-lg mx-4 md:mx-auto max-w-7xl">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">About Us</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-600 text-lg mb-4">
+                            We are a passionate team of creators and developers dedicated to crafting unique and impactful digital solutions. Our mission is to transform ideas into reality, one pixel at a time. We believe in the power of collaboration and strive to build strong relationships with our clients.
+                        </p>
+                        <p class="text-gray-600 text-lg">
+                            From initial concept to final deployment, we provide a seamless experience, focusing on clean code, intuitive design, and robust performance.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/94a3b8/e2e8f0?text=Our+Team" alt="Placeholder image of a team working" class="rounded-lg shadow-md w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AI-Powered Service Assistant Section -->
+        <section id="assistant" class="py-12 bg-gray-50 rounded-lg mx-4 md:mx-auto max-w-7xl">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">✨ AI-Powered Service Assistant</h2>
+                <div class="bg-white rounded-lg p-6 shadow-md max-w-2xl mx-auto">
+                    <p class="text-gray-600 mb-4">
+                        Describe the type of service you need a pitch for and our AI will generate a brief description.
+                    </p>
+                    <div class="flex items-center space-x-4 mb-4">
+                        <input type="text" id="service-input" placeholder="e.g., Cloud Hosting, UI/UX Design" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button id="generate-button" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
+                            Generate Description
+                        </button>
+                    </div>
+                    <div id="response-container" class="relative">
+                        <div id="loading-spinner" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <div class="spinner"></div>
+                        </div>
+                        <p id="generated-text" class="text-gray-800 text-lg p-4 bg-gray-100 rounded-lg min-h-[50px]"></p>
+                    </div>
+                    <div id="error-message" class="hidden text-red-500 mt-2 text-sm text-center"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Image Generator Section -->
+        <section id="image-gen" class="py-12 bg-white rounded-lg mx-4 md:mx-auto max-w-7xl">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">✨ AI Image Generator</h2>
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md max-w-2xl mx-auto">
+                    <p class="text-gray-600 mb-4">
+                        Describe the image you want to create and our AI will bring it to life.
+                    </p>
+                    <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row items-center md:space-x-4 mb-4">
+                        <input type="text" id="image-input" placeholder="e.g., A futuristic city at sunset" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button id="generate-image-button" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 w-full md:w-auto">
+                            Generate Image
+                        </button>
+                    </div>
+                    <div id="image-container" class="relative mt-4">
+                        <div id="image-spinner" class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <div class="spinner"></div>
+                        </div>
+                        <img id="generated-image" src="" alt="Generated image will appear here" class="w-full rounded-lg shadow-md border-2 border-gray-300 min-h-[250px] object-cover" />
+                    </div>
+                    <div id="image-error-message" class="hidden text-red-500 mt-2 text-sm text-center"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Documentation Section -->
+        <section id="docs" class="py-12 bg-gray-50 rounded-lg mx-4 md:mx-auto max-w-7xl">
+            <div class="container mx-auto px-4 prose prose-indigo max-w-none">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">Documentation</h2>
+                <p>
+                    This single-file HTML web application serves as a demonstration of how the Gemini API can be seamlessly integrated into a simple web page using plain JavaScript. The entire application, including all its features and styling, is contained within this single file, making it easy to share and deploy.
+                </p>
+                <h3 class="font-semibold text-lg text-gray-800 mt-6 mb-2">Features</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>AI-Powered Service Assistant:</strong> This feature utilizes the Gemini API's text generation capability. It sends a user's prompt to the <code>gemini-2.5-flash-preview-05-20</code> model, which is instructed to act as a marketing copywriter. The model then returns a concise, engaging service description.</li>
+                    <li><strong>AI Image Generator:</strong> This feature leverages the Gemini API's image generation model, <code>imagen-3.0-generate-002</code>. A user's text description is sent to the API, which returns a base64-encoded image. This image is then displayed on the page.</li>
+                </ul>
+                <h3 class="font-semibold text-lg text-gray-800 mt-6 mb-2">Technical Details</h3>
+                <p>
+                    The application is built using standard web technologies:
+                </p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>HTML:</strong> Provides the fundamental structure and content of the webpage.</li>
+                    <li><strong>Tailwind CSS:</strong> Loaded via a CDN, it's used for all styling to ensure a modern, responsive, and clean design.</li>
+                    <li><strong>JavaScript:</strong> Handles all of the interactivity, including listening for button clicks, showing/hiding loading spinners, and making asynchronous API calls to the Gemini API endpoints.</li>
+                </ul>
+                <h4 class="font-semibold text-base text-gray-800 mt-4 mb-2">API Integration</h4>
+                <p>
+                    The API calls are made using the standard <code>fetch</code> function. The API key is defined in the JavaScript code as an empty string (<code>const apiKey = "";</code>), which is automatically handled and provided by the canvas environment during runtime.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-12">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white rounded-lg p-6 shadow-md transition duration-300 transform hover:-translate-y-2">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Web Design</h3>
+                        <p class="text-gray-600">
+                            Crafting beautiful, user-centric websites that captivate and convert.
+                        </p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white rounded-lg p-6 shadow-md transition duration-300 transform hover:-translate-y-2">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Development</h3>
+                        <p class="text-gray-600">
+                            Building fast, scalable, and secure web applications from the ground up.
+                        </p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white rounded-lg p-6 shadow-md transition duration-300 transform hover:-translate-y-2">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">SEO & Marketing</h3>
+                        <p class="text-gray-600">
+                            Helping your business grow with strategic online visibility and marketing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-12 bg-gray-50 rounded-lg mx-4 md:mx-auto max-w-7xl text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Ready to start your project? We'd love to hear from you.
+            </p>
+            <a href="mailto:info@companyco.com" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                Contact Us
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2023 CompanyCo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to the DOM elements for the text generator
+            const inputElement = document.getElementById('service-input');
+            const generateButton = document.getElementById('generate-button');
+            const generatedTextElement = document.getElementById('generated-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const errorMessageElement = document.getElementById('error-message');
+
+            // Get references to the DOM elements for the image generator
+            const imageInput = document.getElementById('image-input');
+            const generateImageButton = document.getElementById('generate-image-button');
+            const generatedImage = document.getElementById('generated-image');
+            const imageSpinner = document.getElementById('image-spinner');
+            const imageErrorMessage = document.getElementById('image-error-message');
+
+            // API key (left blank, Canvas will inject it)
+            const apiKey = "";
+            
+            // --- Text Generation Logic ---
+            const textApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            generateButton.addEventListener('click', async () => {
+                const userQuery = inputElement.value.trim();
+                if (userQuery === '') {
+                    generatedTextElement.textContent = "Please enter a service to generate a description.";
+                    return;
+                }
+
+                generatedTextElement.textContent = '';
+                errorMessageElement.classList.add('hidden');
+                loadingSpinner.classList.remove('hidden');
+
+                const systemPrompt = "You are a professional marketing copywriter. Generate a concise, engaging, one-paragraph description for a service based on the user's input. The tone should be professional and persuasive.";
+                const payload = {
+                    contents: [{ parts: [{ text: `Generate a service description for: ${userQuery}` }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                try {
+                    const response = await fetch(textApiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`API error: ${response.status} - ${errorData.error.message}`);
+                    }
+
+                    const result = await response.json();
+                    const generatedContent = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (generatedContent) {
+                        generatedTextElement.textContent = generatedContent;
+                    } else {
+                        throw new Error('No content generated by the API.');
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch from Gemini API:', error);
+                    errorMessageElement.textContent = `Error: ${error.message}. Please try again.`;
+                    errorMessageElement.classList.remove('hidden');
+                } finally {
+                    loadingSpinner.classList.add('hidden');
+                }
+            });
+
+            // --- Image Generation Logic ---
+            const imageApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+
+            generateImageButton.addEventListener('click', async () => {
+                const userPrompt = imageInput.value.trim();
+                if (userPrompt === '') {
+                    imageErrorMessage.textContent = "Please enter a description to generate an image.";
+                    imageErrorMessage.classList.remove('hidden');
+                    return;
+                }
+                
+                // Show loading state
+                generatedImage.src = '';
+                imageErrorMessage.classList.add('hidden');
+                imageSpinner.classList.remove('hidden');
+                
+                const payload = {
+                    instances: {
+                        prompt: userPrompt
+                    },
+                    parameters: {
+                        "sampleCount": 1
+                    }
+                };
+                
+                try {
+                    const response = await fetch(imageApiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`API error: ${response.status} - ${errorData.error.message}`);
+                    }
+
+                    const result = await response.json();
+                    const base64Data = result?.predictions?.[0]?.bytesBase64Encoded;
+
+                    if (base64Data) {
+                        const imageUrl = `data:image/png;base64,${base64Data}`;
+                        generatedImage.src = imageUrl;
+                    } else {
+                        throw new Error('No image data returned from the API.');
+                    }
+                } catch (error) {
+                    console.error('Failed to generate image:', error);
+                    imageErrorMessage.textContent = `Error: ${error.message}. Please try again.`;
+                    imageErrorMessage.classList.remove('hidden');
+                } finally {
+                    // Hide the loading spinner
+                    imageSpinner.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

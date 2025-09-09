@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TechCorp Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">TechCorp Solutions</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html" class="current-page">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> > Contact Us
+        </div>
+
+        <div class="page-content">
+            <h1>Contact Us</h1>
+            
+            <section class="section">
+                <h2>Get in Touch</h2>
+                <p>Ready to start your next project? We'd love to hear from you. Contact us today for a free consultation and discover how we can help transform your business with innovative technology solutions.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div style="margin: 2rem 0;">
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>📍 Headquarters Address</strong>
+                                <p>123 Tech Boulevard<br>
+                                Innovation District<br>
+                                San Francisco, CA 94105<br>
+                                United States</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>📞 Phone Numbers</strong>
+                                <p>Main: +91 (123) 456-7890<br>
+                                Sales: +91 (555) 123-4568<br>
+                                Support: +91 (555) 123-4569</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>✉️ Email Addresses</strong>
+                                <p>General: <a href="mailto:info@techcorpsolutions.com">info@techcorpsolutions.com</a><br>
+                                Sales: <a href="mailto:sales@techcorpsolutions.com">sales@techcorpsolutions.com</a><br>
+                                Support: <a href="mailto:support@techcorpsolutions.com">support@techcorpsolutions.com</a></p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong>🕒 Business Hours</strong>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM PST<br>
+                                Saturday: 10:00 AM - 4:00 PM PST<br>
+                                Sunday: Closed<br>
+                                <small>Emergency support available 24/7</small></p>
+                            </div>
+                        </div>
+                        
+                        <h3>Follow Us</h3>
+                        <div style="margin: 1rem 0;">
+                            <a href="https://www.linkedin.com/in/pankaj-kumar-0a98b5302/" style="margin-right: 1rem; color: #3498db; text-decoration: none;">🔗 LinkedIn (Pankaj Kumar)</a>
+                            <a href="https://x.com/PankajB42550" style="margin-right: 1rem; color: #3498db; text-decoration: none;">🐦 Twitter (X)</a>
+                            <a href="#" style="margin-right: 1rem; color: #3498db; text-decoration: none;">📘 Facebook</a>
+                            <a href="https://www.instagram.com/k_pankaj_01/" style="margin-right: 1rem; color: #3498db; text-decoration: none;">📸 Instagram (k_pankaj_01)</a>
+                            <a href="#" style="color: #3498db; text-decoration: none;">🎥 YouTube</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>Send us a Message</h3>
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" name="company" placeholder="Your company name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service">Service Interested In</label>
+                                <select id="service" name="service">
+                                    <option value="">Select a service</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-development">Mobile App Development</option>
+                                    <option value="cloud-solutions">Cloud Solutions</option>
+                                    <option value="cybersecurity">Cybersecurity</option>
+                                    <option value="data-analytics">Data Analytics & AI</option>
+                                    <option value="it-consulting">IT Consulting</option>
+                                    <option value="digital-transformation">Digital Transformation</option>
+                                    <option value="other">Other (please specify in message)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Project Budget Range (USD)</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select a budget range</option>
+                                    <option value="under-10k">Under $10,000</option>
+                                    <option value="10k-50k">$10,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="100k-500k">$100,000 - $500,000</option>
+                                    <option value="over-500k">Over $500,000</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Enter your message"></textarea>
+                            </div>
+                            
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
