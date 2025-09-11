@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8 Homework - The Box Model</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content (your existing content) -->
+    <div class="container">
+        <h1>Day 8 Homework: The Box Model</h1>
+        <!-- ... rest of your existing HTML ... -->
+    </div>
+
+    <!-- Optional: JavaScript to remove loading class -->
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.remove('loading');
+            }, 100);
+        });
+    </script>
+
+        <div class="section">
+            <h2>Part 1 & 3: Three Cards & Custom Values</h2>
+            <div class="card-container">
+                <div class="card">
+                    This is Card 1
+                    <p>with padding, border, and margin.</p>
+                </div>
+                <div class="card">
+                    This is Card 2
+                    <p>with padding, border, and margin.</p>
+                </div>
+                <div class="card">
+                    This is Card 3
+                    <p>with padding, border, and margin.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px;">
+                The box model is made up of four parts: content, padding, border, and margin.
+            </p>
+        </div>
+
+        <div class="section">
+    <h2>Part 2: Display Properties</h2>
+    <p><strong>Block:</strong> Takes up the full width, forcing a new line.</p>
+    <div class="card block">I'm a Block Element</div>
+
+    <p><strong>Inline:</strong> Sits on the same line. Ignores width/height and vertical margins.</p>
+    <div class="inline-container">
+        <div class="card inline">I'm Inline</div>
+        <div class="card inline">I'm also Inline</div>
+        <div class="card inline">I'm another Inline</div>
+    </div>
+
+    <p><strong>Inline-Block:</strong> Sits on the same line, but can have width and height.</p>
+    <div class="inline-block-container">
+        <div class="card inline-block">I'm Inline-Block</div>
+        <div class="card inline-block">I'm also Inline-Block</div>
+        <div class="card inline-block">I'm another Inline-Block</div>
+    </div>
+</div>
+
+        <div class="section">
+            <h2>Part 4: box-sizing: content-box vs. border-box</h2>
+            <p style="text-align: center;">These two boxes have the same CSS width, height, padding, and border. Look at how their final sizes are different.</p>
+            <div class="box-sizing-examples">
+                <div class="box-example content-box">
+                    Content-Box
+                </div>
+                <div class="box-example border-box">
+                    Border-Box
+                </div>
+            </div>
+            <div class="box-sizing-examples">
+                <p class="label">Total Width = 200px + 25px + 25px + 3px + 3px = 256px</p>
+                <p class="label">Total Width = 200px</p>
+            </div>
+        </div>
+    </div>
+</body>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div class="page-loader">
+        <div class="loader-wrapper">
+            <span class="loader-letter">L</span>
+            <span class="loader-letter">o</span>
+            <span class="loader-letter">a</span>
+            <span class="loader-letter">d</span>
+            <span class="loader-letter">i</span>
+            <span class="loader-letter">n</span>
+            <span class="loader-letter">g</span>
+            <span class="loader-letter">.</span>
+            <span class="loader-letter">.</span>
+            <span class="loader-letter">.</span>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+
+
+    </div> <!-- End of last section -->
+
+    <!-- Copyright Footer -->
+    <footer class="copyright-footer">
+        <div class="copyright-content">
+            <div class="copyright-main">
+                © 2024 Day 8 Homework - The Box Model
+            </div>
+            
+            <div class="copyright-details">
+                <div class="copyright-item">
+                    <div class="copyright-icon">©</div>
+                    <span>All rights reserved</span>
+                </div>
+                
+                <div class="copyright-item">
+                    <div class="copyright-icon">⚡</div>
+                    <span>Built with modern CSS</span>
+                </div>
+                
+                <div class="copyright-item">
+                    <div class="copyright-icon">🎨</div>
+                    <span>Designed for education</span>
+                </div>
+                
+                <div class="copyright-item">
+                    <div class="copyright-icon">📱</div>
+                    <span>Fully responsive</span>
+                </div>
+            </div>
+
+            <div class="loader-credit">
+                <strong>Loading Animation:</strong> Loader component from 
+                <a href="https://uiverse.io" target="_blank" rel="noopener">Uiverse.io</a> 
+                by <a href="https://uiverse.io/dexter-st" target="_blank" rel="noopener">dexter-st</a>
+            </div>
+            
+            <div class="copyright-note">
+                This project demonstrates CSS Box Model concepts including padding, borders, margins, 
+                and display properties. Created for educational purposes to showcase modern web design techniques.
+            </div>
+        </div>
+    </footer>
+
+</div> <!-- End of container -->
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    background-color: lightblue;
+    height: 200px;
+    width: 400px;
+
+    text-align: center;
+    border-top: 10px solid rgb(24, 14, 10);
+/*     
+    padding-right: 10px; 
+    padding: 10px 20px 30px 40px;  */
+    /* margin-top: 50px; */
+    margin: 50px 20px 30px 40px;
+
+    border-radius: 50px;
+
+/* 
+    margin: 85px;
+    text-align: center;
+
+
+    border-width: 3px;
+    border-style: solid;
+    border-color: red;
+
+    border: 10px solid darkorange; shorthand property */
+    /* padding: 10px; */
+    /* margin: 10px;    */
+
+
+    font-size: 50px;
+    color: darkblue;
+}
+
+h2 {
+    background-color: pink;
+    border: 2px solid blue;
+    text-align: center;
+    margin: 30px;
+    padding: 20px;
+
+    /* height: 150px;
+    
+    font-size: 35px;
+    color: darkgreen; */
+}
+
+
+p {
+    background-color: aquamarine;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid blue;
+    margin: 35px;
+
+}

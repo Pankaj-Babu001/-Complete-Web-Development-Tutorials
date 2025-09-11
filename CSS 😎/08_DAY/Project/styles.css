@@ -1,0 +1,669 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    padding: 40px 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 
+        0 30px 100px rgba(0, 0, 0, 0.12),
+        0 15px 50px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+h1 {
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 60px;
+    font-size: 4.5em;
+    font-weight: 800;
+    letter-spacing: -2px;
+    position: relative;
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    border-radius: 2px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 35px;
+    font-size: 2.8em;
+    font-weight: 700;
+    position: relative;
+    padding-left: 30px;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 4px;
+}
+
+.section {
+    margin-bottom: 80px;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Part 1 & 3: Full Desktop Card Grid */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+    max-width: none;
+}
+
+.card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 35px;
+    border: 5px solid transparent;
+    background-clip: padding-box;
+    margin: 25px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3em;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 
+        0 15px 45px rgba(102, 126, 234, 0.3),
+        0 8px 25px rgba(118, 75, 162, 0.2);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 
+        0 30px 80px rgba(102, 126, 234, 0.4),
+        0 15px 40px rgba(118, 75, 162, 0.3);
+}
+
+.card:nth-child(1) {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.card:nth-child(2) {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    animation: slideInUp 0.8s ease-out 0.2s both;
+}
+
+.card:nth-child(3) {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    animation: slideInRight 0.8s ease-out 0.4s both;
+}
+
+.card p {
+    margin-top: 20px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.9;
+    font-size: 1.1em;
+}
+
+.card:hover::after {
+    content: 'Padding: 40px | Border: 5px | Margin: 25px';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    z-index: 10;
+    font-weight: 500;
+}
+
+/* Part 2: Enhanced Display Properties for Desktop */
+.block {
+    display: block;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    border: 4px solid #c0392b;
+    margin: 20px 0;
+    width: 100%;
+    font-size: 1.2em;
+    padding: 25px;
+    animation: slideInLeft 0.6s ease-out;
+    border-radius: 12px;
+    position: relative;
+}
+
+.block::before {
+    content: 'BLOCK ELEMENT';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: #c0392b;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Container for inline elements to prevent formatting issues */
+.inline-container {
+    margin: 20px 0;
+    line-height: 2.5;
+}
+
+.inline {
+    display: inline;
+    background: linear-gradient(135deg, #feca57, #ff9ff3);
+    border: 3px solid #f0932b;
+    margin: 8px;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.inline:hover {
+    background: linear-gradient(135deg, #ff9ff3, #feca57);
+    transform: scale(1.05);
+}
+
+/* Container for inline-block elements */
+.inline-block-container {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.inline-block {
+    display: inline-block;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border: 4px solid #5f3dc4;
+    margin: 15px;
+    width: 220px;
+    height: 90px;
+    padding: 20px;
+    vertical-align: top;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
+    font-size: 1.1em;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inline-block::before {
+    content: 'INLINE-BLOCK';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #5f3dc4;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.inline-block:hover {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    transform: translateY(-8px) rotate(3deg);
+}
+
+/* Part 4: Enhanced Box Sizing for Desktop */
+.box-sizing-examples {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100px;
+    margin: 60px 0;
+    position: relative;
+}
+
+.box-example {
+    width: 280px;
+    height: 140px;
+    padding: 35px;
+    border: 6px solid #8e44ad;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    box-shadow: 0 12px 35px rgba(142, 68, 173, 0.3);
+}
+
+.content-box {
+    box-sizing: content-box;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.content-box::after {
+    content: 'content-box\ATotal Width: 350px\A(280 + 35×2 + 6×2)';
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(142, 68, 173, 0.9);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    white-space: pre;
+    text-align: center;
+    line-height: 1.4;
+    min-width: 200px;
+}
+
+.border-box::after {
+    content: 'border-box\ATotal Width: 280px\A(padding & border included)';
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(142, 68, 173, 0.9);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    white-space: pre;
+    text-align: center;
+    line-height: 1.4;
+    min-width: 200px;
+}
+
+.box-example:hover {
+    transform: scale(1.08);
+    box-shadow: 0 20px 50px rgba(142, 68, 173, 0.4);
+}
+
+/* Visual comparison arrow */
+.box-sizing-examples::before {
+    content: 'VS';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2em;
+    z-index: 2;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional styling for better presentation */
+p {
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    line-height: 1.8;
+}
+
+strong {
+    color: #2c3e50;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.1em;
+}
+
+/* Loading Animation Feature - From Uiverse.io by dexter-st */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeOut 1s ease-out 3s forwards;
+}
+
+.loader-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    font-family: "Inter", sans-serif;
+    font-size: 1.4em;
+    font-weight: 400;
+    color: white;
+    border-radius: 50%;
+    background-color: transparent;
+    user-select: none;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: transparent;
+    animation: loader-rotate 2s linear infinite;
+    z-index: 0;
+}
+
+@keyframes loader-rotate {
+    0% {
+        transform: rotate(90deg);
+        box-shadow:
+            0 10px 20px 0 #fff inset,
+            0 20px 30px 0 #ad5fff inset,
+            0 60px 60px 0 #471eec inset;
+    }
+    50% {
+        transform: rotate(270deg);
+        box-shadow:
+            0 10px 20px 0 #fff inset,
+            0 20px 10px 0 #d60a47 inset,
+            0 40px 60px 0 #311e80 inset;
+    }
+    100% {
+        transform: rotate(450deg);
+        box-shadow:
+            0 10px 20px 0 #fff inset,
+            0 20px 30px 0 #ad5fff inset,
+            0 60px 60px 0 #471eec inset;
+    }
+}
+
+.loader-letter {
+    display: inline-block;
+    opacity: 0.4;
+    transform: translateY(0);
+    animation: loader-letter-anim 2s infinite;
+    z-index: 1;
+    border-radius: 50ch;
+    border: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.loader-letter:nth-child(1) { animation-delay: 0s; }
+.loader-letter:nth-child(2) { animation-delay: 0.1s; }
+.loader-letter:nth-child(3) { animation-delay: 0.2s; }
+.loader-letter:nth-child(4) { animation-delay: 0.3s; }
+.loader-letter:nth-child(5) { animation-delay: 0.4s; }
+.loader-letter:nth-child(6) { animation-delay: 0.5s; }
+.loader-letter:nth-child(7) { animation-delay: 0.6s; }
+.loader-letter:nth-child(8) { animation-delay: 0.7s; }
+.loader-letter:nth-child(9) { animation-delay: 0.8s; }
+.loader-letter:nth-child(10) { animation-delay: 0.9s; }
+
+@keyframes loader-letter-anim {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+    40% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Hide main content initially */
+body.loading .container {
+    opacity: 0;
+    animation: fadeInContent 1s ease-out 3.5s forwards;
+}
+
+@keyframes fadeInContent {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Advanced Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Advanced hover effects */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+    border-radius: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.section:hover::before {
+    opacity: 1;
+}
+
+/* Desktop-specific enhancements */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1800px;
+        padding: 80px;
+    }
+    
+    .card-container {
+        gap: 60px;
+    }
+    
+    .card {
+        min-height: 240px;
+        font-size: 1.4em;
+    }
+    
+    .box-sizing-examples {
+        gap: 150px;
+    }
+    
+    .box-example {
+        width: 320px;
+        height: 160px;
+    }
+}
+
+/* Subtle responsive adjustments for large desktops */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        padding: 50px;
+    }
+    
+    .card-container {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .card-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 40px;
+    }
+    
+    .box-sizing-examples {
+        flex-direction: column;
+        align-items: center;
+        gap: 80px;
+    }
+    
+    .box-sizing-examples::before {
+        display: none;
+    }
+}
