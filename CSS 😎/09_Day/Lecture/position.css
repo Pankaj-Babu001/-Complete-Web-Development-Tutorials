@@ -1,0 +1,72 @@
+h1 {
+    background-color: rgb(44, 43, 87);
+    position: relative;
+
+    left: 650px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 95%, 7%, 0.783);
+    max-width: fit-content;
+}
+
+h2{
+    background-color: orange;
+    position: relative;
+    top: auto;
+    left: 30px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 93%, 24%, 0.783);
+    max-width: fit-content; 
+}
+
+h3{
+    background-color: rgb(44, 43, 87);
+    position: relative;
+    top: 50px;
+    left: 30px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 95%, 7%, 0.783);
+    max-width: fit-content;
+}
+
+
+h4 {
+    background-color: rgb(14, 12, 179);
+    position: static;
+    top: 50px;
+    left: 50px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 95%, 7%, 0.783);
+    max-width: fit-content;
+}
+
+h5 {
+    background-color: rgb(14, 12, 179);
+    position: fixed;
+    top: 0px;
+    left: 50px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 95%, 7%, 0.783);
+    max-width: fit-content;
+}
+p {
+    background-color: rgb(162, 69, 7);
+    position: absolute;
+    left: 50px;
+    top:75px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 95%, 7%, 0.783);
+    max-width: fit-content;
+}
+

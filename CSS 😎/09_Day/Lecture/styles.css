@@ -1,0 +1,58 @@
+h1 {
+    background-color: aqua;
+}
+
+#firstId {
+    background-color: red;
+}
+
+#firstId {
+    background-color: rgb(68, 0, 255);
+    background-color: wheat;
+}
+
+
+h2 {
+    background-color: rgb(255, 255, 255) important;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgb(232, 14, 14);
+}
+/* 
+.classA {
+    background-color: green;
+}
+
+
+li{
+    background-color: green;
+}
+
+body{
+    background-color: rgb(240, 240, 240);
+} */
+
+h1 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgb(232, 14, 14);
+}
+
+h2 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgb(232, 14, 14);
+}
+
+li {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgb(232, 14, 14);
+}

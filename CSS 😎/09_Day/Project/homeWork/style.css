@@ -1,0 +1,29 @@
+.laos-flag {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  /* Using 'relative' positioning allows us to place the circle accurately within this container. */
+}
+
+.red-stripe {
+  width: 100%;
+  height: 100px;
+  background-color: #ce1126; /* The official red color of the Laotian flag. */
+}
+
+.blue-stripe {
+  width: 100%;
+  height: 200px;
+  background-color: #002868; /* The official blue color of the Laotian flag. */
+}
+
+.white-circle {
+  width: 160px;
+  height: 160px;
+  background-color: white;
+  border-radius: 50%; /* This makes the div a perfect circle. */
+  position: absolute; /* 'Absolute' positioning is key to centering the circle. */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* This CSS transform is the most reliable way to center the element perfectly, regardless of its size. */
+}

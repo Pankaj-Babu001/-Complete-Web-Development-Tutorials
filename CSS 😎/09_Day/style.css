@@ -1,0 +1,20 @@
+body{
+    background-color: rgba(235, 225, 225, 0.881);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+
+
+    box-shadow: 0cqbx 2px 4px rgba(160, 145, 145, 0.893);
+}
+
+.div {
+    background-attachment: fixed;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    
+}

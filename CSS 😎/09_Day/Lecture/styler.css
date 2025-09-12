@@ -1,0 +1,65 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e3e8f2ea;
+    margin-top: 200px;
+    padding-bottom: 500px;
+}
+
+h1 {
+    background-color: rgb(44, 43, 87);
+    position: relative;
+    left: 100px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 95%, 7%, 0.783);
+    max-width: fit-content;
+}
+
+h2 {
+    background-color: orange;
+    position: relative;
+    left: 100px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px  hsla(0, 93%, 24%, 0.783);
+    max-width: fit-content;
+}
+
+h3 {
+    background-color: pink;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 15;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: black;
+    box-shadow: 0 4px 6px hsla(0, 93%, 24%, 0.783);
+    max-width: fit-content;
+}
+
+h4 {
+    background-color: brown;
+    position: sticky;
+    top: 1rem;
+    position: relative;
+    left: 100px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 6px hsla(0, 93%, 24%, 0.783);
+    max-width: fit-content;
+}
+
+p {
+    text-align: center;
+    background-color: rgb(98, 188, 8);
+    padding: 0.5rem;
+    position: relative;
+    left: 100px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px  hsla(0, 93%, 24%, 0.783);
+    max-width: fit-content;
+}
