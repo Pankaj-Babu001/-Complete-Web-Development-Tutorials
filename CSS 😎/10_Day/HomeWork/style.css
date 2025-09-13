@@ -1,0 +1,323 @@
+/*
+ * Google font "Inter" for a clean look
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Basic setup and font */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars on the main body */
+}
+
+/* Main container for the two sections */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Left section with the form */
+.form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+/* Form box styling */
+.form-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.form-box h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+}
+
+/* Google button */
+.google-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: background-color 0.3s;
+}
+
+.google-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.google-btn img {
+    height: 1.2rem;
+}
+
+/* "or" divider */
+.or {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #999;
+}
+
+.or::before, .or::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.or:not(:empty)::before {
+    margin-right: 1em;
+}
+
+.or:not(:empty)::after {
+    margin-left: 1em;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    color: #555;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #f77042;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    font-size: 1.25rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 0.75rem;
+    accent-color: #f77042;
+    transform: scale(1.2);
+}
+
+.checkbox-group label {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+/* Create account button */
+.create-account-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #f77042;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-account-btn:hover {
+    background-color: #e56035;
+}
+
+/* Links and terms */
+.login-link, .terms {
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #555;
+}
+
+.login-link a, .terms a {
+    color: #f77042;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover, .terms a:hover {
+    text-decoration: underline;
+}
+
+/* Right section with the quote */
+.quote-section {
+    flex: 1;
+    background-color: #8c53f7;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* The curved shape */
+.quote-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100px;
+    height: 100%;
+    width: 200px;
+    background: #8c53f7;
+    transform: skewX(-15deg);
+    transform-origin: top left;
+}
+
+.quote-content {
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+}
+
+.quotation-mark {
+    font-family: serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.quote {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 4rem; /* Adjusted to make space for the quotation mark */
+}
+
+.author {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.author .title {
+    font-weight: 400;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.company-logo {
+    margin-top: 1.5rem;
+    height: 3rem;
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+/* Trusted by section */
+.trusted-by {
+    position: absolute;
+    bottom: 3rem;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.trusted-by p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0.6;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.trusted-by .logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.trusted-by .logos img {
+    height: 1.5rem;
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .form-section {
+        padding: 1rem;
+        flex: none;
+    }
+
+    .quote-section {
+        flex: none;
+        padding: 2rem 1rem;
+        height: auto;
+    }
+
+    .quote-section::before {
+        display: none; /* Hide the curve on mobile */
+    }
+
+    .quote-content {
+        max-width: 100%;
+    }
+
+    .trusted-by {
+        position: static;
+        margin-top: 2rem;
+    }
+}

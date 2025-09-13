@@ -1,0 +1,77 @@
+.container {
+    height: 800px;
+    width: 800px;
+    background-color: rgb(235, 228, 228);
+    margin: 10px;
+    display: flex;
+
+    flex-direction: row;
+
+    /* flex-direction: row-reverse;
+    flex-direction: column-reverse; */
+/* 
+    justify-content: center;
+    justify-content: space-around;
+    justify-content: space-between;
+    justify-content: space-evenly; 
+    flex-direction: center;
+*/
+    /* justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap-reverse;*/
+
+    
+    /* flex-wrap: wrap; */
+}
+/* 
+justify-content : main axis ke around kaam karta hai 
+main axis decide kun karega , aapka flex direction decide karta hai 
+
+aroud */
+
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    /* flex-grow: 1; */
+    flex-basis: 200;
+}
+
+.first {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(223, 58, 8);
+    /* flex-grow: 1; */
+    margin: 10px;
+    display: inline-block;
+    /* border-radius: 50%; 
+    flex-basis: 200px; */
+}
+
+.second {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    
+    margin: 10px;
+    display: inline-block;
+}
+
+.third {
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+   
+    margin: 10px;
+    display: inline-block;
+    align-self: start;
+}
+
+.fourth {
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+    
+    margin: 10px;
+    display: inline-block;
+}

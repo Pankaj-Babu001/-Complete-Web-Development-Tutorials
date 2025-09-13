@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Flexbox Homework - Interactive Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        /* Flex Direction Demo Styles */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .row-demo {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            min-height: 120px;
+        }
+
+        .column-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            height: 300px;
+        }
+
+        .demo-item {
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            color: #2d3436;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-item:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+        }
+
+        /* Cards Demo Styles */
+        .cards-container {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #2d3436;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .card p {
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+            color: #636e72;
+        }
+
+        .card-button {
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: auto;
+            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
+        }
+
+        .card-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(253, 121, 168, 0.4);
+        }
+
+        .card-1 { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+        .card-1 h3, .card-1 p { color: white; }
+
+        .card-2 { background: linear-gradient(135deg, #00b894, #00cec9); }
+        .card-2 h3, .card-2 p { color: white; }
+
+        .card-3 { background: linear-gradient(135deg, #e17055, #d63031); }
+        .card-3 h3, .card-3 p { color: white; }
+
+        .card-4 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+        .card-4 h3, .card-4 p { color: white; }
+
+        /* Flex Grow/Shrink Demo Styles */
+        .demo-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .flex-item {
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            min-width: 100px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .grow-demo .flex-item:nth-child(1) {
+            flex-grow: 1;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        }
+
+        .grow-demo .flex-item:nth-child(2) {
+            flex-grow: 2;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        .grow-demo .flex-item:nth-child(3) {
+            flex-grow: 3;
+            background: linear-gradient(45deg, #43e97b, #38f9d7);
+        }
+
+        .shrink-demo .flex-item {
+            width: 250px;
+        }
+
+        .shrink-demo .flex-item:nth-child(1) {
+            flex-shrink: 0;
+            background: linear-gradient(45deg, #fa709a, #fee140);
+        }
+
+        .shrink-demo .flex-item:nth-child(2) {
+            flex-shrink: 1;
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+        }
+
+        .shrink-demo .flex-item:nth-child(3) {
+            flex-shrink: 2;
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+        }
+
+        .property-display {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+
+        .code-display {
+            background: rgba(0, 0, 0, 0.5);
+            color: #4facfe;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+        }
+
+        .property-highlight {
+            color: #43e97b;
+            font-weight: bold;
+        }
+
+        .explanation {
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .interactive-note {
+            background: rgba(67, 233, 123, 0.2);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+            border: 1px solid rgba(67, 233, 123, 0.3);
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 1rem 2rem;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-container {
+                flex-direction: column;
+            }
+
+            .card {
+                min-width: unset;
+            }
+
+            .demo-container {
+                flex-wrap: wrap;
+                flex-direction: column;
+            }
+
+            .shrink-demo .flex-item {
+                width: 100%;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">FlexBox Demo</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link active" data-section="overview">Overview</a></li>
+                <li><a href="#" class="nav-link" data-section="direction">Direction</a></li>
+                <li><a href="#" class="nav-link" data-section="cards">Cards</a></li>
+                <li><a href="#" class="nav-link" data-section="grow-shrink">Grow/Shrink</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Overview Section -->
+        <div class="section active" id="overview">
+            <div class="hero">
+                <h1 class="main-title">Complete Flexbox Homework</h1>
+                <p class="subtitle">Interactive demonstrations of all flexbox concepts</p>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="section-title">📚 What You'll Learn</h2>
+                <div class="cards-container">
+                    <div class="card card-1">
+                        <div class="card-icon">➡️</div>
+                        <h3>Flex Direction</h3>
+                        <p>Master row, column, and reverse directions. Understand main and cross axes.</p>
+                        <button class="card-button" onclick="showSection('direction')">Explore</button>
+                    </div>
+
+                    <div class="card card-2">
+                        <div class="card-icon">📱</div>
+                        <h3>Equal-Height Cards</h3>
+                        <p>Create responsive card layouts with equal heights regardless of content length.</p>
+                        <button class="card-button" onclick="showSection('cards')">Learn More</button>
+                    </div>
+
+                    <div class="card card-3">
+                        <div class="card-icon">🚀</div>
+                        <h3>Grow & Shrink</h3>
+                        <p>Control how items expand and contract with flex-grow and flex-shrink properties.</p>
+                        <button class="card-button" onclick="showSection('grow-shrink')">Discover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Direction Section -->
+        <div class="section" id="direction">
+            <div class="hero">
+                <h1 class="main-title">Flex-Direction: Row vs Column</h1>
+                <p class="subtitle">Understanding the main axis and cross axis in Flexbox layouts</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="demo-section">
+                    <h2 class="section-title">➡️ Flex-Direction: Row</h2>
+                    
+                    <div class="row-demo">
+                        <div class="demo-item">Item 1</div>
+                        <div class="demo-item">Item 2</div>
+                        <div class="demo-item">Item 3</div>
+                    </div>
+
+                    <div class="code-display">
+<span class="property-highlight">display: flex;</span>
+<span class="property-highlight">flex-direction: row;</span> /* Default value */
+                    </div>
+
+                    <div class="explanation">
+                        <strong>Main Axis:</strong> Horizontal (left to right)<br>
+                        <strong>Cross Axis:</strong> Vertical<br>
+                        <strong>Use Case:</strong> Navigation bars, button groups, horizontal layouts
+                    </div>
+                </div>
+
+                <div class="demo-section">
+                    <h2 class="section-title">⬇️ Flex-Direction: Column</h2>
+                    
+                    <div class="column-demo">
+                        <div class="demo-item">Item 1</div>
+                        <div class="demo-item">Item 2</div>
+                        <div class="demo-item">Item 3</div>
+                    </div>
+
+                    <div class="code-display">
+<span class="property-highlight">display: flex;</span>
+<span class="property-highlight">flex-direction: column;</span>
+                    </div>
+
+                    <div class="explanation">
+                        <strong>Main Axis:</strong> Vertical (top to bottom)<br>
+                        <strong>Cross Axis:</strong> Horizontal<br>
+                        <strong>Use Case:</strong> Sidebars, card layouts, mobile-first design
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="section-title">🔄 Key Concepts</h2>
+                
+                <div class="code-display">
+/* All flex-direction values */
+flex-direction: row;         /* Default: left to right */
+flex-direction: row-reverse; /* Right to left */
+flex-direction: column;      /* Top to bottom */
+flex-direction: column-reverse; /* Bottom to top */
+
+/* Remember: flex-direction affects */
+/* - Main axis (primary direction) */
+/* - Cross axis (perpendicular direction) */
+/* - How justify-content and align-items work */
+                </div>
+
+                <div class="explanation">
+                    <strong>Pro Tip:</strong> When you change flex-direction, the main axis and cross axis switch. This affects how justify-content and align-items behave!
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="section" id="cards">
+            <div class="hero">
+                <h1 class="main-title">Equal-Height Cards Demo</h1>
+                <p class="subtitle">Notice how all cards have the same height regardless of content length</p>
+            </div>
+
+            <div class="cards-container">
+                <div class="card card-1">
+                    <div class="card-icon">🎨</div>
+                    <h3>Web Design</h3>
+                    <p>Create beautiful, responsive websites that capture your brand's essence and engage your audience.</p>
+                    <button class="card-button">Learn More</button>
+                </div>
+
+                <div class="card card-2">
+                    <div class="card-icon">📱</div>
+                    <h3>Mobile App Development</h3>
+                    <p>Build powerful mobile applications for iOS and Android platforms. We use cutting-edge technologies like React Native and Flutter to deliver exceptional user experiences that scale with your business needs and requirements. Our team ensures your app performs flawlessly across all devices.</p>
+                    <button class="card-button">Get Started</button>
+                </div>
+
+                <div class="card card-3">
+                    <div class="card-icon">🚀</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Boost your search engine rankings and drive organic traffic to your website with our proven SEO strategies.</p>
+                    <button class="card-button">Optimize Now</button>
+                </div>
+
+                <div class="card card-4">
+                    <div class="card-icon">💼</div>
+                    <h3>Business Consulting</h3>
+                    <p>Transform your business with expert consulting services. We provide strategic guidance, process optimization, and innovative solutions to help you achieve your goals. Our experienced consultants work closely with your team to identify opportunities, streamline operations, and implement sustainable growth strategies that deliver measurable results for your organization.</p>
+                    <button class="card-button">Consult Now</button>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="section-title">🔧 How Equal-Height Cards Work</h2>
+                <p style="margin-bottom: 1rem;">The key to equal-height cards is using Flexbox on the container:</p>
+                
+                <div class="code-display">
+.cards-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;  /* Each card takes equal space */
+    display: flex;
+    flex-direction: column;
+}
+
+.card p {
+    flex-grow: 1;  /* Content grows to fill space */
+}
+
+.card-button {
+    margin-top: auto;  /* Button sticks to bottom */
+}
+                </div>
+
+                <div class="explanation">
+                    <strong>Key Points:</strong><br>
+                    • <code>flex: 1</code> makes each card take equal width<br>
+                    • <code>display: flex</code> on cards creates internal flex layout<br>
+                    • <code>flex-direction: column</code> stacks content vertically<br>
+                    • <code>flex-grow: 1</code> on paragraphs fills available space<br>
+                    • <code>margin-top: auto</code> pushes buttons to bottom
+                </div>
+            </div>
+        </div>
+
+        <!-- Grow/Shrink Section -->
+        <div class="section" id="grow-shrink">
+            <div class="hero">
+                <h1 class="main-title">Flex-Grow & Flex-Shrink Demo</h1>
+                <p class="subtitle">Resize your browser window to see how items grow and shrink!</p>
+            </div>
+
+            <div class="interactive-note">
+                🖱️ <strong>Try This:</strong> Resize your browser window to see the effects in action!
+            </div>
+
+            <!-- FLEX-GROW DEMO -->
+            <div class="demo-section">
+                <h2 class="section-title">🚀 Flex-Grow Property</h2>
+                <div style="margin-bottom: 1rem;">Items expand to fill available space based on their flex-grow values:</div>
+                
+                <div class="demo-container grow-demo">
+                    <div class="flex-item">
+                        <div>Item 1</div>
+                        <div class="property-display">flex-grow: 1</div>
+                    </div>
+                    <div class="flex-item">
+                        <div>Item 2</div>
+                        <div class="property-display">flex-grow: 2</div>
+                    </div>
+                    <div class="flex-item">
+                        <div>Item 3</div>
+                        <div class="property-display">flex-grow: 3</div>
+                    </div>
+                </div>
+
+                <div class="code-display">
+.item1 { flex-grow: 1; }  /* Takes 1/6 of extra space */
+.item2 { flex-grow: 2; }  /* Takes 2/6 of extra space */
+.item3 { flex-grow: 3; }  /* Takes 3/6 of extra space */
+                </div>
+
+                <div class="explanation">
+                    <strong>How it works:</strong> flex-grow determines how much of the remaining space an item should take up. The values are proportional - item 3 will be 3 times larger than item 1 when space is available.
+                </div>
+            </div>
+
+            <!-- FLEX-SHRINK DEMO -->
+            <div class="demo-section">
+                <h2 class="section-title">🔍 Flex-Shrink Property</h2>
+                <div style="margin-bottom: 1rem;">Items shrink when space is limited based on their flex-shrink values:</div>
+                
+                <div class="demo-container shrink-demo">
+                    <div class="flex-item">
+                        <div>No Shrink</div>
+                        <div class="property-display">flex-shrink: 0</div>
+                    </div>
+                    <div class="flex-item">
+                        <div>Normal</div>
+                        <div class="property-display">flex-shrink: 1</div>
+                    </div>
+                    <div class="flex-item">
+                        <div>High Shrink</div>
+                        <div class="property-display">flex-shrink: 2</div>
+                    </div>
+                </div>
+
+                <div class="code-display">
+.item1 { flex-shrink: 0; }  /* Never shrinks */
+.item2 { flex-shrink: 1; }  /* Default shrinking */
+.item3 { flex-shrink: 2; }  /* Shrinks twice as much */
+                </div>
+
+                <div class="explanation">
+                    <strong>How it works:</strong> flex-shrink controls how much an item shrinks when there isn't enough space. A value of 0 prevents shrinking, while higher values shrink more aggressively.
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="section-title">💡 Common Patterns</h2>
+                
+                <div class="code-display">
+/* Common flex patterns */
+.equal-width { flex: 1; }           /* Equal width items */
+.no-shrink { flex: 0 0 auto; }     /* Fixed size, no grow/shrink */
+.grow-only { flex: 1 0 auto; }     /* Can grow, won't shrink */
+.shrink-only { flex: 0 1 auto; }   /* Can shrink, won't grow */
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        function showSection(sectionId) {
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            
+            // Close mobile menu
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+
+        // Add click listeners to nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                showSection(sectionId);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Make showSection globally available for button clicks
+        window.showSection = showSection;
+    </script>
+</body>
+</html>
