@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 2px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    display: flex;
+    background-color: white;
+    padding: 5px;
+    gap: 20px;
+}
+
+.Box{
+    height: 300px;
+    width: 200px;
+}
+
+.first{
+    background-color: rgb(61, 10, 215);
+    text-align: center;
+    border-radius: 30px;
+}
+
+.second{
+   display: flex;
+   flex-direction: column;
+   gap:20px;
+}
+
+.child{
+    height: 140px;
+    background-color: rgb(214, 18, 149);
+    text-align: center;
+    border-radius: 500px;
+}
