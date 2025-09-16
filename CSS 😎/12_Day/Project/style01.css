@@ -1,0 +1,18 @@
+.container {
+    height: 200px;
+    width: 200px;
+    background-color: hsl(153, 18%, 80%);
+
+    /* background-color: orange; 
+    box-shadow: 10px 10px blue; 
+    box-shadow: 20px 20px 0px 30px blue;
+    box-shadow: inset 10px 10px blue;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 10px red;*/
+
+    overflow: scroll;
+
+}
+
+/* Offset-X | Offset-Y | Blur radus | Spread-radus| Color  */
