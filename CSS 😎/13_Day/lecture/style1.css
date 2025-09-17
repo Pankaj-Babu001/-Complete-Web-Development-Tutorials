@@ -1,0 +1,44 @@
+*{
+    height: 0;
+    width: 0;
+    box-sizing: border-box;
+
+    background-color: black;
+}
+
+.container{
+    padding: 20px;
+}
+
+.box {
+    height: 100px;
+    width: 200px;
+    background-color: red;
+    border-radius: 10px;
+    animation-name: moving;
+    animation-duration: 3s;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-delay: 2s;
+    
+    animation-fill-mode: forwards;
+    /* animation-fill-mode: backwards; 
+    animation-fill-mode: both;*/
+    
+    position: absolute;
+}
+
+@keyframes moving {
+    from{
+        background-color: royalblue;
+        top: 10px;
+        left: 10px;
+    }
+    to {
+        background-color: rgb(4, 164, 73);
+        top: 850px;
+        left: 1325px;
+    }
+}

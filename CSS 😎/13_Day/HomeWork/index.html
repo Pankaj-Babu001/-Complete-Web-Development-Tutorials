@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Styling Exploration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>CSS Styling Exploration</h1>
+        <p>Demonstrating different CSS techniques, units, and components</p>
+    </header>
+    
+    <section>
+        <h2>1. Styled Cards with Different Looks</h2>
+        <div class="card-container">
+            <div class="card card-1">
+                <h3>Soft & Rounded</h3>
+                <p>This card uses soft colors, rounded corners, and a subtle gradient background. The font is thin and modern.</p>
+                <p>Border: 2px solid #ff6b6b</p>
+            </div>
+            
+            <div class="card card-2">
+                <h3>Light & Airy</h3>
+                <p>This card uses a light blue gradient with a dashed border. The font is clean and readable.</p>
+                <p>Border: 3px dashed #4facfe</p>
+            </div>
+            
+            <div class="card card-3">
+                <h3>Dark & Elegant</h3>
+                <p>This card uses a dark gradient with white text for contrast. The font is more elegant and serif.</p>
+                <p>Border: 1px solid #5a67d8</p>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>2. CSS Units Comparison: px vs rem vs em</h2>
+        <div class="units-demo">
+            <div class="unit-example">
+                <h3>Pixels (px)</h3>
+                <p>Absolute units that don't change with parent element size.</p>
+                <div class="px-box">
+                    This box uses pixels for font-size (16px), padding (16px), and margin (8px).
+                </div>
+            </div>
+            
+            <div class="unit-example">
+                <h3>Root Ems (rem)</h3>
+                <p>Relative to the root element (html) font size.</p>
+                <div class="rem-box">
+                    This box uses rem units for font-size (1rem), padding (1rem), and margin (0.5rem).
+                </div>
+            </div>
+            
+            <div class="unit-example">
+                <h3>Ems (em)</h3>
+                <p>Relative to the parent element's font size.</p>
+                <div class="parent">
+                    Parent element with font-size: 20px
+                    <div class="em-box">
+                        This box uses em units for font-size (1em), padding (1em), and margin (0.5em).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>3. Testimonial Component with Overlay</h2>
+        <div class="testimonial">
+            <div class="testimonial-bg"></div>
+            <div class="overlay"></div>
+            <div class="testimonial-content">
+                <h3>Excellent Service</h3>
+                <p>"I was blown away by the quality of service I received. The team went above and beyond to ensure my satisfaction. I would highly recommend them to anyone looking for professional and reliable service."</p>
+                <div class="testimonial-author">
+                    <img class="author-avatar" src="https://media.licdn.com/dms/image/v2/D4E03AQGes16_GjjIUg/profile-displayphoto-scale_400_400/B4EZlXoiTPHoAg-/0/1758111871013?e=1761177600&v=beta&t=fHH9_mHubObNU2BV1JadXn0JGkZQhjafRvTN-_SO9z8" alt="Pankaj's">
+                    <div>
+                        <strong>Pankaj's</strong>
+                        <p>Frontend Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>4. CSS Inheritance Guide</h2>
+        <table class="inheritance-table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Inherited</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>color</td>
+                    <td class="inherited">Yes</td>
+                    <td>Text color is inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>font-family</td>
+                    <td class="inherited">Yes</td>
+                    <td>Font family is inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>font-size</td>
+                    <td class="inherited">Yes</td>
+                    <td>Font size is inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>line-height</td>
+                    <td class="inherited">Yes</td>
+                    <td>Line height is inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>text-align</td>
+                    <td class="inherited">Yes</td>
+                    <td>Text alignment is inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>margin</td>
+                    <td class="not-inherited">No</td>
+                    <td>Margin is not inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>padding</td>
+                    <td class="not-inherited">No</td>
+                    <td>Padding is not inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>border</td>
+                    <td class="not-inherited">No</td>
+                    <td>Border is not inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>background</td>
+                    <td class="not-inherited">No</td>
+                    <td>Background is not inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td class="not-inherited">No</td>
+                    <td>Width is not inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td class="not-inherited">No</td>
+                    <td>Height is not inherited by child elements</td>
+                </tr>
+                <tr>
+                    <td>display</td>
+                    <td class="not-inherited">No</td>
+                    <td>Display property is not inherited by child elements</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <footer>
+        <p>Copyright &copy; 2025 CSS Styling Exploration - Created for educational purposes</p>
+    </footer>
+</body>
+</html>
