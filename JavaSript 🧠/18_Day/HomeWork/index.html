@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Memory Concepts - Homework</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 JavaScript Memory Concepts - Homework Solutions</h1>
+
+        <!-- Problem 1: Value vs Reference -->
+        <div class="problem">
+            <h2>1️⃣ Value vs Reference with Arrays & Objects</h2>
+            <p>Demonstrates how primitives are copied by value, while arrays and objects are copied by reference.</p>
+            
+            <div class="code-block">
+                <pre>// Problem 1: Value vs Reference
+function demonstrateValueVsReference() {
+    console.log("=== PRIMITIVES (VALUE) ===");
+    let a = 10;
+    let b = a; // Copy by VALUE
+    
+    console.log("Before modification:");
+    console.log("a =", a, "| b =", b);
+    
+    b = 20; // Only b changes
+    console.log("After b = 20:");
+    console.log("a =", a, "| b =", b, "← a unchanged!");
+    
+    console.log("\n=== ARRAYS (REFERENCE) ===");
+    let arr1 = [1, 2, 3];
+    let arr2 = arr1; // Copy by REFERENCE
+    
+    console.log("Before modification:");
+    console.log("arr1 =", arr1);
+    console.log("arr2 =", arr2);
+    console.log("Same reference?", arr1 === arr2);
+    
+    arr2.push(4); // Modifies both!
+    console.log("After arr2.push(4):");
+    console.log("arr1 =", arr1, "← Modified too!");
+    console.log("arr2 =", arr2);
+    
+    console.log("\n=== OBJECTS (REFERENCE) ===");
+    let obj1 = { name: "John", age: 25 };
+    let obj2 = obj1; // Copy by REFERENCE
+    
+    console.log("Before modification:");
+    console.log("obj1 =", obj1);
+    console.log("obj2 =", obj2);
+    
+    obj2.age = 30; // Modifies both!
+    obj2.city = "New York"; // Adds to both!
+    console.log("After modifying obj2:");
+    console.log("obj1 =", obj1, "← Modified too!");
+    console.log("obj2 =", obj2);
+    
+    console.log("\n=== CREATING TRUE COPIES ===");
+    let arr3 = [1, 2, 3];
+    let arr4 = [...arr3]; // Spread operator creates new array
+    let obj3 = { name: "Jane", age: 28 };
+    let obj4 = { ...obj3 }; // Spread operator creates new object
+    
+    arr4.push(4);
+    obj4.age = 35;
+    
+    console.log("arr3 =", arr3, "| arr4 =", arr4, "← Different!");
+    console.log("obj3 =", obj3);
+    console.log("obj4 =", obj4, "← Different!");
+}</pre>
+            </div>
+            
+            <button class="run-btn" onclick="runProblem1()">Run Problem 1</button>
+            <div class="output" id="output1" style="display:none;">
+                <h4>Output:</h4>
+                <pre id="result1"></pre>
+            </div>
+        </div>
+
+        <!-- Problem 2: Function Call Stack -->
+        <div class="problem">
+            <h2>2️⃣ Function Call Stack Tracing</h2>
+            <p>Traces the entry and exit order of nested functions to understand the call stack.</p>
+            
+            <div class="code-block">
+                <pre>// Problem 2: Function Call Stack Tracing
+function traceCallStack() {
+    console.log("=== FUNCTION CALL STACK TRACE ===");
+    
+    function functionA() {
+        console.log("→ Entering functionA");
+        functionB();
+        console.log("← Exiting functionA");
+    }
+    
+    function functionB() {
+        console.log("  → Entering functionB");
+        functionC();
+        console.log("  ← Exiting functionB");
+    }
+    
+    function functionC() {
+        console.log("    → Entering functionC");
+        console.log("    ◆ Inside functionC - deepest level");
+        console.log("    ← Exiting functionC");
+    }
+    
+    console.log("🚀 Starting execution...");
+    functionA();
+    console.log("✅ Execution complete!");
+    
+    console.log("\n=== CALL STACK VISUALIZATION ===");
+    console.log("Stack grows like this:");
+    console.log("┌─────────────────┐");
+    console.log("│   functionC     │ ← 3rd (deepest)");
+    console.log("├─────────────────┤");
+    console.log("│   functionB     │ ← 2nd");
+    console.log("├─────────────────┤");
+    console.log("│   functionA     │ ← 1st");
+    console.log("├─────────────────┤");
+    console.log("│ traceCallStack  │ ← base");
+    console.log("└─────────────────┘");
+    console.log("Then unwinds in reverse order (LIFO)");
+}</pre>
+            </div>
+            
+            <button class="run-btn" onclick="runProblem2()">Run Problem 2</button>
+            <div class="output" id="output2" style="display:none;">
+                <h4>Output:</h4>
+                <pre id="result2"></pre>
+            </div>
+        </div>
+
+        <!-- Problem 3: Stack Overflow -->
+        <div class="problem">
+            <h2>3️⃣ Stack Overflow Example</h2>
+            <p>Demonstrates infinite recursion that causes stack overflow.</p>
+            
+            <div class="warning">
+                ⚠️ <strong>Warning:</strong> This will cause a stack overflow error! The browser will stop execution when the call stack limit is reached.
+            </div>
+            
+            <div class="code-block">
+                <pre>// Problem 3: Stack Overflow (Infinite Recursion)
+function demonstrateStackOverflow() {
+    console.log("=== STACK OVERFLOW EXAMPLE ===");
+    
+    let callCount = 0;
+    const maxSafeLimit = 1000; // Safety limit for demo
+    
+    function infiniteRecursion(depth = 1) {
+        callCount++;
+        
+        // Safety check to prevent browser crash in demo
+        if (callCount >= maxSafeLimit) {
+            console.log(`🛑 Stopped at ${callCount} calls to prevent browser crash`);
+            console.log("In a real scenario, this would continue until:");
+            console.log("💥 RangeError: Maximum call stack size exceeded");
+            return;
+        }
+        
+        if (depth <= 5 || depth % 100 === 0) {
+            console.log(`📞 Call #${callCount} - Depth: ${depth}`);
+        }
+        
+        // This creates infinite recursion!
+        infiniteRecursion(depth + 1); // No base case = infinite calls
+        
+        // This line never executes due to stack overflow
+        console.log(`This will never print for call ${callCount}`);
+    }
+    
+    console.log("Starting infinite recursion...");
+    console.log("Each call adds a new frame to the stack without removing previous ones");
+    
+    try {
+        infiniteRecursion();
+    } catch (error) {
+        console.log("🚨 Caught error:", error.message);
+        console.log("📊 Total calls before overflow:", callCount);
+    }
+    
+    console.log("\n=== HOW TO FIX ===");
+    console.log("✅ Always include a base case:");
+    
+    function properRecursion(n) {
+        if (n <= 0) return; // BASE CASE!
+        console.log("Counting down:", n);
+        properRecursion(n - 1);
+    }
+    
+    console.log("\n🔧 Fixed version:");
+    properRecursion(3);
+}</pre>
+            </div>
+            
+            <button class="run-btn" onclick="runProblem3()">Run Problem 3 (Safe Demo)</button>
+            <div class="output" id="output3" style="display:none;">
+                <h4>Output:</h4>
+                <pre id="result3"></pre>
+            </div>
+        </div>
+
+        <!-- Problem 4: Memory Behavior Comparison -->
+        <div class="problem">
+            <h2>4️⃣ Memory Behavior: Primitive vs Object Modification</h2>
+            <p>Compares memory behavior when reassigning primitives vs modifying objects.</p>
+            
+            <div class="code-block">
+                <pre>// Problem 4: Memory Behavior Comparison
+function compareMemoryBehavior() {
+    console.log("=== MEMORY BEHAVIOR COMPARISON ===");
+    
+    console.log("🔢 PRIMITIVE REASSIGNMENT:");
+    let primitiveVar = 42;
+    console.log("Original value:", primitiveVar);
+    console.log("Memory location: [Stack] - stores actual value");
+    
+    // Reassigning creates a new value in memory
+    primitiveVar = 100;
+    console.log("After reassignment:", primitiveVar);
+    console.log("✅ Old value (42) is garbage collected");
+    console.log("✅ New value (100) stored in same variable slot");
+    
+    console.log("\n🏠 OBJECT MODIFICATION:");
+    let objectVar = { count: 42, name: "Test" };
+    console.log("Original object:", objectVar);
+    console.log("Memory: [Heap] - variable stores reference to object");
+    
+    // Modifying object changes the existing object in memory
+    objectVar.count = 100;
+    objectVar.newProperty = "Added";
+    console.log("After modification:", objectVar);
+    console.log("✅ Same object in memory, just modified");
+    console.log("✅ Reference remains the same");
+    
+    console.log("\n📊 MEMORY TRACKING DEMO:");
+    
+    // Track object references
+    let obj1 = { value: 1 };
+    let obj2 = obj1; // Same reference
+    
+    console.log("obj1 === obj2 (same reference):", obj1 === obj2);
+    
+    // Modify object
+    obj1.value = 999;
+    console.log("After obj1.value = 999:");
+    console.log("obj1:", obj1);
+    console.log("obj2:", obj2, "← Same object modified!");
+    console.log("Still same reference:", obj1 === obj2);
+    
+    // Reassign object reference
+    obj1 = { value: 555 }; // New object!
+    console.log("\nAfter obj1 = { value: 555 }:");
+    console.log("obj1:", obj1, "← New object");
+    console.log("obj2:", obj2, "← Still old object");
+    console.log("Same reference now:", obj1 === obj2, "← Different!");
+    
+    console.log("\n🧠 MEMORY SUMMARY:");
+    console.log("┌─────────────────────────────────────────┐");
+    console.log("│ PRIMITIVES (number, string, boolean)   │");
+    console.log("│ • Stored directly in stack             │");
+    console.log("│ • Reassignment = new value             │");
+    console.log("│ • Old value gets garbage collected     │");
+    console.log("├─────────────────────────────────────────┤");
+    console.log("│ OBJECTS & ARRAYS                        │");
+    console.log("│ • Stored in heap                        │");
+    console.log("│ • Variable holds reference (pointer)    │");
+    console.log("│ • Modification = same object changed    │");
+    console.log("│ • Reassignment = new reference          │");
+    console.log("└─────────────────────────────────────────┘");
+}</pre>
+            </div>
+            
+            <button class="run-btn" onclick="runProblem4()">Run Problem 4</button>
+            <div class="output" id="output4" style="display:none;">
+                <h4>Output:</h4>
+                <pre id="result4"></pre>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: #4fd1c7;">
+            <p>✨ All homework problems completed! Check each output to understand the concepts.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
