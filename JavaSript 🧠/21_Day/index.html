@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Strings & Dates Lecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .venn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 700px;
+            margin-bottom: 40px;
+        }
+
+        .circle {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .circle:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .left-circle {
+            background: linear-gradient(135deg, #667eea 0%, #4c63d2 100%);
+            left: 0;
+            color: white;
+        }
+
+        .right-circle {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            right: 0;
+            color: white;
+        }
+
+        .overlap {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .circle-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .topic-section {
+            margin-bottom: 20px;
+        }
+
+        .topic-heading {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .topic-list li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .topic-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 5px;
+            opacity: 0.8;
+        }
+
+        .overlap-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .overlap-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .overlap-item {
+            background: rgba(255,255,255,0.2);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 500;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 1200px) {
+            .circle {
+                width: 450px;
+                height: 450px;
+                padding: 40px 30px;
+            }
+
+            .overlap {
+                width: 250px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .venn-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .circle {
+                position: relative;
+                left: 0 !important;
+                right: 0 !important;
+                margin: 20px auto;
+                width: 90%;
+                max-width: 500px;
+                height: auto;
+            }
+
+            .overlap {
+                position: relative;
+                width: 90%;
+                max-width: 500px;
+                height: auto;
+                transform: none;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 JavaScript Mastery Lecture</h1>
+            <p>Comprehensive Guide to Strings & Dates</p>
+        </div>
+
+        <div class="venn-container">
+            <div class="circle left-circle">
+                <div class="circle-title">📝 Part 1: Strings</div>
+                
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">🔤</span>String Fundamentals</div>
+                    <ul class="topic-list">
+                        <li>Primitives & Immutability</li>
+                        <li>String Indices</li>
+                        <li>The Golden Rule</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">✨</span>Creation Methods</div>
+                    <ul class="topic-list">
+                        <li>Single & Double Quotes</li>
+                        <li>Template Literals</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">🛠️</span>Essential Methods</div>
+                    <ul class="topic-list">
+                        <li>.length, .toUpperCase()</li>
+                        <li>.indexOf(), .includes()</li>
+                        <li>.slice(), .replace()</li>
+                        <li>.toLocaleUpperCase()</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">⚠️</span>Critical Concepts</div>
+                    <ul class="topic-list">
+                        <li>new String() Trap</li>
+                        <li>Auto-Boxing Magic</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="overlap">
+                <div class="overlap-title">🔗 Shared Core</div>
+                <div class="overlap-content">
+                    <div class="overlap-item">💡 JavaScript Objects</div>
+                    <div class="overlap-item">🔒 Immutability Patterns</div>
+                    <div class="overlap-item">⚡ Methods & Properties</div>
+                    <div class="overlap-item">✅ Best Practices</div>
+                    <div class="overlap-item">🌐 International Support</div>
+                </div>
+            </div>
+
+            <div class="circle right-circle">
+                <div class="circle-title">📅 Part 2: Dates</div>
+                
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">⏰</span>Core Concepts</div>
+                    <ul class="topic-list">
+                        <li>Unix Epoch Explained</li>
+                        <li>new Date() Constructor</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">🚨</span>Critical Gotcha</div>
+                    <ul class="topic-list">
+                        <li>Zero-Indexed Months</li>
+                        <li>Common Pitfalls</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">🔧</span>Date Components</div>
+                    <ul class="topic-list">
+                        <li>.getFullYear(), .setMonth()</li>
+                        <li>Getters & Setters</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">🌍</span>UTC Standard</div>
+                    <ul class="topic-list">
+                        <li>Universal Time Concept</li>
+                        <li>Master Clock of Web</li>
+                        <li>Timezone Examples</li>
+                    </ul>
+                </div>
+
+                <div class="topic-section">
+                    <div class="topic-heading"><span class="icon">🚀</span>Future & Legacy</div>
+                    <ul class="topic-list">
+                        <li>Don't Break the Web</li>
+                        <li>Temporal API</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
