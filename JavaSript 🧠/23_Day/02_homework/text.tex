@@ -1,0 +1,39 @@
+Student object created:
+Alice Johnson, Age: 20, Grade: A
+
+2️⃣ Looping through keys:
+Using for...in:
+Key: name, Value: Alice Johnson
+Key: age, Value: 20
+Key: grade, Value: A
+Key: courses, Value: [ 'Math', 'Physics', 'Computer Science' ]
+Key: address, Value: { street: '123 University Ave', city: 'Boston', zipCode: '02115' }
+Key: getInfo, Value: [Function: getInfo]
+Key: addCourse, Value: [Function: addCourse]
+
+3️⃣ Shallow vs Deep Copy:
+Original student courses: [ 'Math', 'Physics', 'Computer Science', 'Biology' ]
+Shallow copy courses: [ 'Math', 'Physics', 'Computer Science', 'Biology' ]
+Original address city: New York
+Shallow copy address city: New York
+
+After deep copy modifications:
+Original student courses: [ 'Math', 'Physics', 'Computer Science', 'Biology' ]
+Deep copy courses: [ 'Math', 'Physics', 'Computer Science', 'Biology', 'Chemistry' ]
+Original address city: New York
+Deep copy address city: Chicago
+
+4️⃣ Destructuring and Renaming:
+Basic destructuring: { name: 'Alice Johnson', age: 20, grade: 'A' }
+Renamed properties: { studentName: 'Alice Johnson', studentAge: 20, studentGrade: 'A' }
+Nested destructuring - City: Boston Street: 123 University Ave
+Full name: Alice Johnson
+
+5️⃣ Symbol Property:
+Student with Symbol property: { name: 'David Wilson', age: 21 }
+Symbol property value: S87654321
+Object.keys() - Symbols not included: [ 'name', 'age' ]
+Object.getOwnPropertyNames() - Symbols not included: [ 'name', 'age' ]
+Symbol properties: [ Symbol(studentId) ]
+Symbol property value: S87654321
+Reflect.ownKeys() - Includes Symbols: [ 'name', 'age', Symbol(studentId) ]
