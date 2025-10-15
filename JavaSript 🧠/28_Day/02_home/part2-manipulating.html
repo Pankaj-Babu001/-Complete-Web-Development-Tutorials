@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2: Reading and Manipulating - DOM Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Part 2: Reading and Manipulating Elements</h1>
+            <a href="index.html" class="back-button">← Back to Main</a>
+        </header>
+        
+        <section>
+            <h2>Changing Content</h2>
+            <div class="demo-area" id="content-demo">
+                <div id="content-example">
+                    Original content with <strong>HTML tags</strong> and text.
+                </div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="changeInnerHTML()">Change innerHTML</button>
+                <button onclick="changeTextContent()">Change textContent</button>
+                <button onclick="changeInnerText()">Change innerText</button>
+            </div>
+            
+            <div class="code-block">
+const element = document.getElementById('content-example');
+
+// innerHTML - gets/sets HTML content (parses HTML tags)
+element.innerHTML = 'New content with <em>HTML</em> tags';
+
+// textContent - gets/sets text content (ignores HTML tags)
+element.textContent = 'New content with <em>HTML</em> tags';
+
+// innerText - gets/sets visible text (respects CSS, performance issues)
+element.innerText = 'New content with <em>HTML</em> tags';
+            </div>
+            
+            <div class="warning">
+                <h4>Security Warning: XSS Attacks</h4>
+                <p>Using <span class="highlight">innerHTML</span> with user input can lead to XSS (Cross-Site Scripting) attacks. Always prefer <span class="highlight">textContent</span> when dealing with user-generated content.</p>
+            </div>
+            
+            <h3>Manipulating Attributes</h3>
+            <div class="demo-area" id="attribute-demo">
+                <img id="attribute-image" src="https://via.placeholder.com/150" alt="Placeholder Image">
+                <div id="attribute-element" class="demo-element">Element with attributes</div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="changeId()">Change ID</button>
+                <button onclick="changeClass()">Change Class</button>
+                <button onclick="setCustomAttribute()">Set Custom Attribute</button>
+                <button onclick="getAllAttributes()">Get All Attributes</button>
+            </div>
+            
+            <div class="code-block">
+const element = document.getElementById('attribute-element');
+
+// Direct property access for standard attributes
+element.id = 'new-id';
+element.className = 'new-class';
+
+// Using getAttribute and setAttribute for any attribute
+element.setAttribute('data-custom', 'custom-value');
+const customValue = element.getAttribute('data-custom');
+
+// Removing attributes
+element.removeAttribute('data-custom');
+            </div>
+            
+            <h3>ClassList API</h3>
+            <div class="demo-area" id="classlist-demo">
+                <div id="classlist-element" class="demo-element base-style">Element with classes</div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="addClass()">Add Class</button>
+                <button onclick="removeClass()">Remove Class</button>
+                <button onclick="toggleClass()">Toggle Class</button>
+                <button onclick="checkClass()">Check Class</button>
+            </div>
+            
+            <div class="code-block">
+const element = document.getElementById('classlist-element');
+
+// classList provides methods to work with classes
+element.classList.add('new-class'); // Add a class
+element.classList.remove('base-style'); // Remove a class
+element.classList.toggle('active'); // Toggle a class
+element.classList.contains('demo-element'); // Check if has class
+
+// Add/remove multiple classes
+element.classList.add('class1', 'class2', 'class3');
+element.classList.remove('class1', 'class2');
+            </div>
+            
+            <h3>Changing Inline Styles</h3>
+            <div class="demo-area" id="style-demo">
+                <div id="style-element" class="demo-element">Element to style</div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="changeBackground()">Change Background</button>
+                <button onclick="changeSize()">Change Size</button>
+                <button onclick="addTransform()">Add Transform</button>
+                <button onclick="resetStyles()">Reset Styles</button>
+            </div>
+            
+            <div class="code-block">
+const element = document.getElementById('style-element');
+
+// Changing styles directly
+element.style.backgroundColor = 'red';
+element.style.width = '200px';
+element.style.height = '100px';
+
+// For CSS properties with hyphens, use camelCase
+element.style.fontSize = '20px';
+element.style.borderRadius = '10px';
+
+// Setting multiple styles at once
+element.style.cssText = 'color: white; padding: 10px; margin: 5px;';
+
+// Removing a style
+element.style.backgroundColor = '';
+            </div>
+            
+            <div class="navigation-footer">
+                <a href="part1-selecting.html" class="nav-button">← Part 1: Selecting</a>
+                <a href="part3-structure.html" class="nav-button">Next: Part 3 →</a>
+            </div>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

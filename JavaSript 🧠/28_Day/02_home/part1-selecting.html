@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1: Understanding and Selecting - DOM Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Part 1: Understanding and Selecting Elements</h1>
+            <a href="index.html" class="back-button">← Back to Main</a>
+        </header>
+        
+        <section>
+            <h2>What is the DOM?</h2>
+            <div class="note">
+                <p>The DOM (Document Object Model) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content.</p>
+            </div>
+            
+            <h3>Window vs Document</h3>
+            <div class="code-block">
+// Window is the global object in the browser
+console.log(window.innerWidth); // Viewport width
+console.log(window.location.href); // Current URL
+
+// Document is part of the window object and represents the HTML document
+console.log(document.title); // Page title
+console.log(document.head); // Head element
+console.log(document.body); // Body element
+            </div>
+            
+            <h3>Classic Selection Methods</h3>
+            <div class="demo-area" id="classic-selection-demo">
+                <div id="unique-element" class="demo-element">I have ID "unique-element"</div>
+                <p class="common-class demo-element">Paragraph with common-class</p>
+                <p class="common-class demo-element">Another paragraph with common-class</p>
+                <span class="demo-element">A span element</span>
+            </div>
+            
+            <div class="flex">
+                <button onclick="selectById()">Select by ID</button>
+                <button onclick="selectByClass()">Select by Class</button>
+                <button onclick="selectByTag()">Select by Tag</button>
+            </div>
+            
+            <div class="code-block">
+// Classic selection methods
+const elementById = document.getElementById('unique-element');
+const elementsByClass = document.getElementsByClassName('common-class');
+const elementsByTag = document.getElementsByTagName('p');
+
+// Note: getElementsByClassName and getElementsByTagName return HTMLCollections
+// which are live collections (update automatically when the DOM changes)
+            </div>
+            
+            <h3>Modern Selection Methods</h3>
+            <div class="demo-area" id="modern-selection-demo">
+                <div class="demo-element" data-category="important">Element with data-category="important"</div>
+                <div class="demo-element special-item">Element with class "special-item"</div>
+                <div class="demo-element">Regular element</div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="querySelectorDemo()">querySelector</button>
+                <button onclick="querySelectorAllDemo()">querySelectorAll</button>
+            </div>
+            
+            <div class="code-block">
+// Modern selection methods - more powerful and flexible
+// querySelector returns the first matching element
+const firstDiv = document.querySelector('div');
+const specialItem = document.querySelector('.special-item');
+const dataElement = document.querySelector('[data-category="important"]');
+
+// querySelectorAll returns a NodeList of all matching elements
+const allDivs = document.querySelectorAll('div');
+const allDemoElements = document.querySelectorAll('.demo-element');
+
+// NodeLists are static (don't update automatically) and can be iterated with forEach
+            </div>
+            
+            <h3>Traversing the DOM</h3>
+            <div class="demo-area" id="traversal-demo">
+                <div id="parent-element" class="demo-element">
+                    Parent Element
+                    <div class="child demo-element">First Child</div>
+                    <div class="child demo-element">Second Child</div>
+                    <div class="child demo-element">Third Child</div>
+                </div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="traverseParent()">Get Parent</button>
+                <button onclick="traverseChildren()">Get Children</button>
+                <button onclick="traverseSiblings()">Get Siblings</button>
+            </div>
+            
+            <div class="code-block">
+// DOM Traversal
+const childElement = document.querySelector('.child');
+
+// Parent
+const parent = childElement.parentElement;
+const parentNode = childElement.parentNode;
+
+// Children
+const parentEl = document.getElementById('parent-element');
+const children = parentEl.children; // HTMLCollection of child elements
+const firstChild = parentEl.firstElementChild;
+const lastChild = parentEl.lastElementChild;
+
+// Siblings
+const secondChild = document.querySelectorAll('.child')[1];
+const previousSibling = secondChild.previousElementSibling;
+const nextSibling = secondChild.nextElementSibling;
+            </div>
+            
+            <div class="navigation-footer">
+                <a href="index.html" class="nav-button">← Back to Main</a>
+                <a href="part2-manipulating.html" class="nav-button">Next: Part 2 →</a>
+            </div>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

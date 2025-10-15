@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 3: Changing DOM Structure - DOM Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Part 3: Changing DOM Structure</h1>
+            <a href="index.html" class="back-button">← Back to Main</a>
+        </header>
+        
+        <section>
+            <h2>Creating and Adding Elements</h2>
+            <div class="demo-area" id="creation-demo">
+                <div id="creation-container" class="demo-element">Container for new elements</div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="createElement()">Create Element</button>
+                <button onclick="appendElement()">Append Element</button>
+                <button onclick="prependElement()">Prepend Element</button>
+                <button onclick="insertBeforeDemo()">Insert Before</button>
+            </div>
+            
+            <div class="code-block">
+// Creating new elements
+const newElement = document.createElement('div');
+newElement.textContent = 'Newly created element';
+newElement.classList.add('demo-element');
+
+// Adding to the DOM
+const container = document.getElementById('creation-container');
+
+// Append - adds as the last child
+container.append(newElement);
+
+// Prepend - adds as the first child
+container.prepend(newElement);
+
+// Insert before a specific element
+const referenceElement = container.children[1];
+container.insertBefore(newElement, referenceElement);
+
+// Classic method (still widely used)
+container.appendChild(newElement);
+            </div>
+            
+            <h3>Removing Elements</h3>
+            <div class="demo-area" id="removal-demo">
+                <div class="demo-element removable">Element 1 (removable)</div>
+                <div class="demo-element removable">Element 2 (removable)</div>
+                <div class="demo-element removable">Element 3 (removable)</div>
+                <div class="demo-element">Element 4 (not removable)</div>
+            </div>
+            
+            <div class="flex">
+                <button onclick="removeLastElement()">Remove Last Element</button>
+                <button onclick="removeAllElements()" class="danger">Remove All Removable</button>
+            </div>
+            
+            <div class="code-block">
+// Removing elements
+const elementToRemove = document.querySelector('.removable');
+
+// Modern way
+elementToRemove.remove();
+
+// Classic way (need to access parent first)
+const parent = elementToRemove.parentElement;
+parent.removeChild(elementToRemove);
+
+// Remove all elements with a specific class
+const removableElements = document.querySelectorAll('.removable');
+removableElements.forEach(element => element.remove());
+            </div>
+            
+            <h3>Performance: DocumentFragment</h3>
+            <div class="note">
+                <p>When adding many elements to the DOM, it's more efficient to use a DocumentFragment to minimize reflows and repaints.</p>
+            </div>
+            
+            <div class="demo-area">
+                <button onclick="addElementsSlow()">Add 1000 Elements (Slow)</button>
+                <button onclick="addElementsFast()">Add 1000 Elements (Fast with Fragment)</button>
+                <button onclick="clearPerformanceDemo()" class="danger">Clear</button>
+                <div id="performance-demo"></div>
+            </div>
+            
+            <div class="code-block">
+// SLOW WAY - Causes multiple reflows
+function addElementsSlow() {
+    const container = document.getElementById('performance-demo');
+    container.innerHTML = '';
+    
+    for (let i = 0; i < 1000; i++) {
+        const element = document.createElement('div');
+        element.textContent = `Element ${i}`;
+        element.className = 'demo-element';
+        container.appendChild(element); // Reflow happens each time
+    }
+}
+
+// FAST WAY - Uses DocumentFragment to minimize reflows
+function addElementsFast() {
+    const container = document.getElementById('performance-demo');
+    container.innerHTML = '';
+    
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = 0; i < 1000; i++) {
+        const element = document.createElement('div');
+        element.textContent = `Element ${i}`;
+        element.className = 'demo-element';
+        fragment.appendChild(element); // No reflow until fragment is added
+    }
+    
+    container.appendChild(fragment); // Single reflow
+}
+            </div>
+            
+            <div class="note">
+                <h4>Understanding Reflow and Repaint</h4>
+                <p><strong>Reflow</strong> (or layout) happens when the browser needs to calculate the position and geometry of elements.</p>
+                <p><strong>Repaint</strong> happens when the browser needs to redraw pixels to the screen (color changes, visibility, etc.).</p>
+                <p>Reflow is more expensive than repaint. Minimizing DOM manipulations helps improve performance.</p>
+            </div>
+            
+            <div class="navigation-footer">
+                <a href="part2-manipulating.html" class="nav-button">← Part 2: Manipulating</a>
+                <a href="index.html" class="nav-button">Back to Main →</a>
+            </div>
+        </section>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
