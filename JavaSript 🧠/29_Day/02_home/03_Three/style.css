@@ -1,0 +1,186 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transition: background 0.5s ease;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    body.dark-mode {
+        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    }
+
+    body.ocean-mode {
+        background: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
+    }
+
+    body.sunset-mode {
+        background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    }
+
+    body.forest-mode {
+        background: linear-gradient(135deg, #134E5E 0%, #71B280 100%);
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        width: 100%;
+        max-width: 700px;
+        backdrop-filter: blur(10px);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+
+    .demo-section {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    .demo-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 15px;
+    }
+
+    .button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .toggle-btn {
+        padding: 15px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .toggle-btn:active {
+        transform: translateY(0);
+    }
+
+    .dark-btn {
+        background: #2c3e50;
+        color: white;
+    }
+
+    .ocean-btn {
+        background: #1BFFFF;
+        color: #2E3192;
+    }
+
+    .sunset-btn {
+        background: #ff6b6b;
+        color: white;
+    }
+
+    .forest-btn {
+        background: #71B280;
+        color: white;
+    }
+
+    .reset-btn {
+        background: #95a5a6;
+        color: white;
+    }
+
+    .color-box {
+        width: 100%;
+        height: 150px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        transition: all 0.5s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .color-box.bg-red {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .color-box.bg-blue {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .color-box.bg-green {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .color-box.bg-purple {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .color-box.bg-orange {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+
+    .info-box {
+        background: #e8f4f8;
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        margin-top: 20px;
+    }
+
+    .info-box h3 {
+        color: #667eea;
+        margin-bottom: 10px;
+    }
+
+    .info-box code {
+        background: #fff;
+        padding: 2px 6px;
+        border-radius: 3px;
+        color: #e74c3c;
+        font-family: 'Courier New', monospace;
+    }
+
+    .current-classes {
+        margin-top: 10px;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+        font-family: monospace;
+        color: #27ae60;
+    }

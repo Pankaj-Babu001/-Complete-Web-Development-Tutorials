@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList.toggle() Demo</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 classList.toggle() Demo</h1>
+        <p class="subtitle">Click buttons to toggle classes and change backgrounds dynamically</p>
+        
+        <!-- Background Toggle Section -->
+        <div class="demo-section">
+            <div class="demo-title">1. Toggle Body Background</div>
+            <div class="button-grid">
+                <button class="toggle-btn dark-btn" onclick="toggleBodyClass('dark-mode')">🌙 Dark Mode</button>
+                <button class="toggle-btn ocean-btn" onclick="toggleBodyClass('ocean-mode')">🌊 Ocean</button>
+                <button class="toggle-btn sunset-btn" onclick="toggleBodyClass('sunset-mode')">🌅 Sunset</button>
+                <button class="toggle-btn forest-btn" onclick="toggleBodyClass('forest-mode')">🌲 Forest</button>
+                <button class="toggle-btn reset-btn" onclick="resetBody()">↺ Reset</button>
+            </div>
+        </div>
+        
+        <!-- Color Box Toggle Section -->
+        <div class="demo-section">
+            <div class="demo-title">2. Toggle Box Colors</div>
+            <div class="color-box" id="colorBox">Click buttons below!</div>
+            <div class="button-grid">
+                <button class="toggle-btn" style="background: #f5576c; color: white;" onclick="toggleBoxClass('bg-red')">Red</button>
+                <button class="toggle-btn" style="background: #00f2fe; color: white;" onclick="toggleBoxClass('bg-blue')">Blue</button>
+                <button class="toggle-btn" style="background: #38f9d7; color: #134E5E;" onclick="toggleBoxClass('bg-green')">Green</button>
+                <button class="toggle-btn" style="background: #764ba2; color: white;" onclick="toggleBoxClass('bg-purple')">Purple</button>
+                <button class="toggle-btn" style="background: #fee140; color: #fa709a;" onclick="toggleBoxClass('bg-orange')">Orange</button>
+            </div>
+            <div class="current-classes">
+                Current classes: <span id="currentClasses">none</span>
+            </div>
+        </div>
+        
+        <!-- Info Section -->
+        <div class="info-box">
+            <h3>How it works:</h3>
+            <p>The <code>classList.toggle()</code> method adds a class if it's not present, or removes it if it is. Perfect for switching between states!</p>
+            <p style="margin-top: 10px;"><strong>Syntax:</strong> <code>element.classList.toggle('className')</code></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

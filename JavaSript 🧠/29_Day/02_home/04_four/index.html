@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflow Events Logger - Chrome DevTools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 Reflow & Repaint Performance Logger</h1>
+            <p>Learn how to identify and optimize browser rendering performance using Chrome DevTools</p>
+        </div>
+        
+        <!-- DevTools Guide -->
+        <div class="devtools-guide">
+            <h2>📊 How to Use Chrome DevTools Performance Tab</h2>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Open DevTools</h3>
+                    <p>Press <strong>F12</strong> or <strong>Ctrl+Shift+I</strong> (Windows/Linux) or <strong>Cmd+Option+I</strong> (Mac)</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Go to Performance</h3>
+                    <p>Click on the <strong>"Performance"</strong> tab in the DevTools panel</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Start Recording</h3>
+                    <p>Click the <strong>Record button (⏺️)</strong> or press <strong>Ctrl+E</strong> to start profiling</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h3>Interact with Page</h3>
+                    <p>Click buttons below to trigger various DOM operations</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <h3>Stop Recording</h3>
+                    <p>Click <strong>Stop</strong> to end recording and view the performance timeline</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">6</span>
+                    <h3>Analyze Events</h3>
+                    <p><strong>Purple bars</strong> = Layout (Reflow)<br><strong>Green bars</strong> = Paint (Repaint)</p>
+                </div>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #9b59b6;"></div>
+                    <span>Layout/Reflow - Recalculates element positions</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2ecc71;"></div>
+                    <span>Paint/Repaint - Updates visual appearance</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <span>Composite - Combines layers</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Demo Grid -->
+        <div class="demo-grid">
+            <!-- Demo 1: Layout Thrashing -->
+            <div class="demo-card">
+                <h3>
+                    ⚠️ Layout Thrashing
+                    <span class="badge badge-reflow">REFLOW</span>
+                </h3>
+                <p class="demo-description">
+                    Reading layout properties (offsetHeight, clientWidth) forces the browser to recalculate layout. Mixing reads and writes causes multiple reflows.
+                </p>
+                <div class="button-container">
+                    <button class="btn btn-danger" onclick="badPractice()">❌ Bad: Read-Write Loop</button>
+                    <button class="btn btn-success" onclick="goodPractice()">✅ Good: Batch Operations</button>
+                </div>
+                <div class="visual-demo">
+                    <div id="boxesContainer1" class="boxes-container"></div>
+                </div>
+            </div>
+            
+            <!-- Demo 2: Geometry Changes -->
+            <div class="demo-card">
+                <h3>
+                    📐 Geometry Changes
+                    <span class="badge badge-reflow">REFLOW</span>
+                </h3>
+                <p class="demo-description">
+                    Changing element size, position, or display properties triggers reflow as the browser must recalculate the layout.
+                </p>
+                <div class="button-container">
+                    <button class="btn btn-warning" onclick="changeSize()">📏 Change Size</button>
+                    <button class="btn btn-warning" onclick="changePosition()">📍 Move Position</button>
+                    <button class="btn btn-warning" onclick="toggleDisplay()">👁️ Toggle Display</button>
+                </div>
+                <div class="visual-demo">
+                    <div class="test-box" id="testBox1">Box</div>
+                </div>
+            </div>
+            
+            <!-- Demo 3: Visual Changes -->
+            <div class="demo-card">
+                <h3>
+                    🎨 Visual-Only Changes
+                    <span class="badge badge-repaint">REPAINT</span>
+                </h3>
+                <p class="demo-description">
+                    These properties only affect appearance, not layout. They trigger repaint but not reflow, making them more performant.
+                </p>
+                <div class="button-container">
+                    <button class="btn btn-info" onclick="changeColor()">🎨 Color</button>
+                    <button class="btn btn-info" onclick="changeOpacity()">👻 Opacity</button>
+                    <button class="btn btn-info" onclick="changeShadow()">💫 Shadow</button>
+                    <button class="btn btn-info" onclick="changeBackground()">🌈 Background</button>
+                </div>
+                <div class="visual-demo">
+                    <div class="test-box" id="testBox2">Box</div>
+                </div>
+            </div>
+            
+            <!-- Demo 4: Bulk Operations -->
+            <div class="demo-card">
+                <h3>
+                    ⚡ Bulk DOM Operations
+                    <span class="badge badge-good">OPTIMIZED</span>
+                </h3>
+                <p class="demo-description">
+                    Using DocumentFragment or batching DOM insertions minimizes reflows. Compare performance in DevTools!
+                </p>
+                <div class="button-container">
+                    <button class="btn btn-danger" onclick="addManyBad()">❌ Add 100 (Slow)</button>
+                    <button class="btn btn-success" onclick="addManyGood()">✅ Add 100 (Fast)</button>
+                    <button class="btn btn-warning" onclick="clearBoxes()">🗑️ Clear</button>
+                </div>
+                <div class="visual-demo">
+                    <div id="boxesContainer2" class="boxes-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance Monitor -->
+        <div class="performance-monitor">
+            <h3>📝 Performance Log</h3>
+            <div class="console-output" id="consoleOutput">
+                <div class="log-line info">
+                    <span class="timestamp">[Ready]</span>
+                    Performance monitoring active. Open DevTools and start recording!
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>💡 Pro Tips for Optimization</h4>
+                <p><strong>• Batch DOM Reads:</strong> Read all layout properties first, then write<br>
+                <strong>• Use requestAnimationFrame:</strong> Schedule visual updates for next paint<br>
+                <strong>• Minimize Forced Reflows:</strong> Avoid reading layout properties in loops<br>
+                <strong>• Use CSS Transforms:</strong> They don't trigger reflow (only composite)<br>
+                <strong>• DocumentFragment:</strong> Build DOM structures off-document first</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

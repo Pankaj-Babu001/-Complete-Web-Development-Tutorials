@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Dynamic List Manager</h1>
+        <p class="subtitle">Add and remove items dynamically using JavaScript DOM manipulation</p>
+        
+        <div class="controls">
+            <input type="text" id="itemInput" placeholder="Enter item name...">
+            <button class="btn add-btn" id="addBtn">➕ Add</button>
+            <button class="btn remove-last-btn" id="removeLastBtn">➖ Remove Last</button>
+        </div>
+        
+        <button class="btn clear-btn" id="clearAllBtn">🗑️ Clear All</button>
+        
+        <ul id="dynamicList"></ul>
+        
+        <div class="stats">
+            <strong>Total Items:</strong> <span id="itemCount">0</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

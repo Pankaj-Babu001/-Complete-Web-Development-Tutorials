@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    color: #1e3c72;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#itemInput {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#itemInput:focus {
+    outline: none;
+    border-color: #1e3c72;
+}
+
+.btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.add-btn {
+    background: #4caf50;
+    color: white;
+}
+
+.add-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.remove-last-btn {
+    background: #f44336;
+    color: white;
+}
+
+.remove-last-btn:hover {
+    background: #da190b;
+    transform: translateY(-2px);
+}
+
+.clear-btn {
+    background: #ff9800;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.clear-btn:hover {
+    background: #e68900;
+}
+
+#dynamicList {
+    list-style: none;
+    min-height: 200px;
+}
+
+.list-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.list-item.removing {
+    animation: slideOut 0.3s ease-out;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+.item-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-number {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.remove-btn:hover {
+    background: white;
+    color: #764ba2;
+}
+
+.empty-state {
+    text-align: center;
+    color: #999;
+    padding: 60px 20px;
+    font-size: 18px;
+}
+
+.stats {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+}
