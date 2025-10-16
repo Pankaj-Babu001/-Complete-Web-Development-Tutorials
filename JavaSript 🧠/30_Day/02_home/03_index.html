@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling Demo</title>
+    <link rel="stylesheet" href="03_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Event Bubbling & Propagation Demo</h1>
+        
+        <div class="demo-section">
+            <div class="demo-box">
+                <div class="demo-title">
+                    <span>🫧</span>
+                    <span>Interactive Demo</span>
+                </div>
+
+                <div class="toggle-section">
+                    <label class="toggle-label">
+                        <div class="toggle-switch" id="toggleSwitch">
+                            <div class="toggle-slider"></div>
+                        </div>
+                        <span id="toggleText">Bubbling Enabled (Click to Stop Propagation)</span>
+                    </label>
+                </div>
+
+                <div class="nested-boxes">
+                    <div class="box grandparent" id="grandparent">
+                        <div class="box-label">👴 Grandparent</div>
+                        <div class="box-info">Click me!</div>
+                        
+                        <div class="box parent" id="parent">
+                            <div class="box-label">👨 Parent</div>
+                            <div class="box-info">Or click me!</div>
+                            
+                            <div class="box child" id="child">
+                                <div class="box-label">👶 Child</div>
+                                <div class="box-info">Or click me!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <div class="demo-title">
+                    <span>📊</span>
+                    <span>Event Log</span>
+                </div>
+                <div class="log-section" id="logSection">
+                    <div style="color: #00ff00;">Click any box to see event bubbling in action...</div>
+                </div>
+                <button class="clear-btn" id="clearBtn">Clear Log</button>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">💡 What's Happening?</div>
+            <div class="info-text">
+                <strong>Event Bubbling:</strong> When you click the child element, the event "bubbles up" through its ancestors 
+                (parent → grandparent). Watch the log to see the order!<br><br>
+                <strong>Stop Propagation:</strong> Toggle the switch above to call <code>event.stopPropagation()</code> 
+                on the clicked element. This prevents the event from bubbling up to parent elements. Try clicking the 
+                child with propagation stopped - you'll see only the child's event fires!<br><br>
+                <strong>Open your browser console</strong> to see additional console.log output!
+            </div>
+        </div>
+    </div>
+
+    <script src="03_script.js"></script>
+</body>
+</html>

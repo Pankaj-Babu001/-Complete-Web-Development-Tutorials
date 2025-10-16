@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation Demo</title>
+    <link rel="stylesheet" href="02_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎪 Event Delegation Demo</h1>
+        <p class="subtitle">Add items dynamically - all handled with one event listener!</p>
+        
+        <div class="controls">
+            <button class="add-btn" id="addBtn">➕ Add New Item</button>
+        </div>
+
+        <div class="items-container" id="itemsContainer">
+            <div class="empty-state">Click "Add New Item" to get started!</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalItems">0</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="clickCount">0</div>
+                <div class="stat-label">Clicks</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">💡 How Event Delegation Works</div>
+            <div class="info-text">
+                Instead of adding event listeners to each item individually, we attach ONE listener to the parent container. 
+                When you click an item, the event bubbles up to the parent, which handles it. This works for all items - 
+                even ones added dynamically after the page loads! Check the console to see the events.
+            </div>
+        </div>
+    </div>
+
+    <script src="02_script.js"></script>
+</body>
+</html>

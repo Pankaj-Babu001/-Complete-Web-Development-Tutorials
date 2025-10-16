@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Button Dashboard</title>
+    <link rel="stylesheet" href="04_style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>🎮 Interactive Button Dashboard</h1>
+            <p class="subtitle">Complete event handler demonstration with multiple interactions</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🖱️</div>
+                <div class="stat-number" id="totalClicks">0</div>
+                <div class="stat-label">Total Clicks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number" id="actionCount">0</div>
+                <div class="stat-label">Actions Performed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔢</div>
+                <div class="stat-number" id="counterValue">0</div>
+                <div class="stat-label">Counter Value</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-number" id="sessionTime">0s</div>
+                <div class="stat-label">Session Time</div>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <div class="panel-title">
+                <span>🎛️</span>
+                <span>Control Center</span>
+            </div>
+
+            <div class="counter-controls">
+                <button class="counter-btn btn-decrement" id="decrementBtn">−</button>
+                <div class="counter-display" id="counterDisplay">0</div>
+                <button class="counter-btn btn-increment" id="incrementBtn">+</button>
+                <button class="counter-btn btn-reset" id="resetBtn">Reset</button>
+            </div>
+
+            <div class="button-grid">
+                <button class="action-btn btn-primary" id="btn1">
+                    🚀 Launch
+                </button>
+                <button class="action-btn btn-success" id="btn2">
+                    ✅ Approve
+                </button>
+                <button class="action-btn btn-warning" id="btn3">
+                    ❤️ Like
+                </button>
+                <button class="action-btn btn-danger" id="btn4">
+                    🔥 Fire
+                </button>
+                <button class="action-btn btn-info" id="btn5">
+                    💡 Inspire
+                </button>
+                <button class="action-btn btn-dark" id="btn6">
+                    🌙 Dark Mode
+                </button>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <strong>Theme Colors:</strong>
+                <div class="theme-selector" id="themeSelector">
+                    <div class="theme-btn active" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-theme="purple"></div>
+                    <div class="theme-btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-theme="pink"></div>
+                    <div class="theme-btn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-theme="blue"></div>
+                    <div class="theme-btn" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-theme="green"></div>
+                    <div class="theme-btn" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-theme="orange"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-feed">
+            <div class="feed-title">
+                <span>📊 Activity Feed</span>
+                <button class="clear-feed-btn" id="clearFeedBtn">Clear</button>
+            </div>
+            <div id="activityContainer">
+                <div class="empty-feed">No activity yet. Click any button to get started!</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="04_script.js"></script>
+</body>
+</html>

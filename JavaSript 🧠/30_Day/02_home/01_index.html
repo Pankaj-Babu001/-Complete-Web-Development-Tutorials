@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click List Logger</title>
+    <link rel="stylesheet" href="01_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Click List Logger</h1>
+        <p class="subtitle">Click any item to see it logged below</p>
+        
+        <ul id="itemList">
+            <li>🍎 Apple</li>
+            <li>🍌 Banana</li>
+            <li>🍊 Orange</li>
+            <li>🍇 Grapes</li>
+            <li>🍓 Strawberry</li>
+        </ul>
+
+        <div class="log-section">
+            <div class="log-title">📝 Activity Log</div>
+            <div id="logContainer">
+                <div class="empty-log">Click an item to start logging...</div>
+            </div>
+            <button class="clear-btn" id="clearBtn">Clear Log</button>
+        </div>
+    </div>
+
+    <script src="01_script.js"></script>
+</body>
+</html>
