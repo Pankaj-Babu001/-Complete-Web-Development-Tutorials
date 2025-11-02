@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Apps Project - Pomodoro Timer & Memory Game</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Web Apps Project</h1>
+            <p class="subtitle">Two interactive apps perfect for JavaScript beginners to learn DOM manipulation, event handling, and more!</p>
+            
+            <div class="app-switcher">
+                <button class="app-btn active" data-app="pomodoro">🍅 Pomodoro Timer</button>
+                <button class="app-btn" data-app="memory">🧠 Memory Game</button>
+            </div>
+            
+            <div class="theme-switcher">
+                <button class="theme-btn active" data-theme="light">☀️</button>
+                <button class="theme-btn" data-theme="dark">🌙</button>
+                <button class="theme-btn" data-theme="nature">🌿</button>
+            </div>
+        </header>
+
+        <!-- Pomodoro Timer App -->
+        <div class="app-container pomodoro-app active">
+            <div class="pomodoro-container">
+                <div class="pomodoro-main">
+                    <div class="timer-container">
+                        <div class="mode-selector">
+                            <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+                            <button class="mode-btn" data-mode="short-break">Short Break</button>
+                            <button class="mode-btn" data-mode="long-break">Long Break</button>
+                        </div>
+                        
+                        <div class="timer-display">
+                            <div class="time-circle">
+                                <svg class="progress-ring" width="300" height="300">
+                                    <circle class="progress-ring-circle" stroke-width="8" fill="transparent" r="140" cx="150" cy="150"/>
+                                </svg>
+                                <div class="time-text">
+                                    <span id="minutes">25</span>:<span id="seconds">00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timer-controls">
+                            <button id="startBtn" class="control-btn start">▶ Start</button>
+                            <button id="pauseBtn" class="control-btn pause" disabled>⏸ Pause</button>
+                            <button id="resetBtn" class="control-btn reset">⏹ Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="tasks-section">
+                        <h3>Tasks</h3>
+                        <div class="task-input">
+                            <input type="text" id="taskInput" placeholder="Add a new task...">
+                            <button id="addTaskBtn">+ Add</button>
+                        </div>
+                        <div class="tasks-list" id="tasksList"></div>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-value" id="completedPomodoros">0</span>
+                                <span class="stat-label">Pomodoros</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="completedTasks">0</span>
+                                <span class="stat-label">Tasks Done</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="productivityScore">0</span>
+                                <span class="stat-label">Score</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memory Game App -->
+        <div class="app-container memory-app">
+            <div class="memory-container">
+                <div class="game-info">
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">Time</span>
+                            <span class="stat-value" id="timer">00:00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Moves</span>
+                            <span class="stat-value" id="moves">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Score</span>
+                            <span class="stat-value" id="score">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="memoryStartBtn" class="control-btn start">🎮 Start Game</button>
+                        <button id="memoryResetBtn" class="control-btn reset">🔄 Reset</button>
+                        <select id="difficulty">
+                            <option value="easy">Easy (4x4)</option>
+                            <option value="medium" selected>Medium (4x5)</option>
+                            <option value="hard">Hard (5x6)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="game-board" id="gameBoard"></div>
+
+                <div class="game-over hidden" id="gameOver">
+                    <div class="result-card">
+                        <h2>🎉 Congratulations!</h2>
+                        <div class="final-stats">
+                            <div class="final-stat">
+                                <span>Time:</span>
+                                <span id="finalTime">00:00</span>
+                            </div>
+                            <div class="final-stat">
+                                <span>Moves:</span>
+                                <span id="finalMoves">0</span>
+                            </div>
+                            <div class="final-stat">
+                                <span>Score:</span>
+                                <span id="finalScore">0</span>
+                            </div>
+                            <div class="final-stat">
+                                <span>Rating:</span>
+                                <span id="rating">⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <button id="playAgainBtn" class="control-btn start">🔄 Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

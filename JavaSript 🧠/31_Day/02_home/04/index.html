@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Apps Project - Drawing App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Web Apps Project</h1>
+            <p class="subtitle">Three interactive apps perfect for JavaScript beginners to learn DOM manipulation, event handling, and more!</p>
+            
+            <div class="app-switcher">
+                <button class="app-btn active" data-app="pomodoro">🍅 Pomodoro Timer</button>
+                <button class="app-btn" data-app="memory">🧠 Memory Game</button>
+                <button class="app-btn" data-app="drawing">🎨 Drawing App</button>
+            </div>
+            
+            <div class="theme-switcher">
+                <button class="theme-btn active" data-theme="light">☀️</button>
+                <button class="theme-btn" data-theme="dark">🌙</button>
+                <button class="theme-btn" data-theme="nature">🌿</button>
+            </div>
+        </header>
+
+        <!-- Pomodoro Timer App -->
+        <div class="app-container pomodoro-app active">
+            <!-- Previous Pomodoro Timer content here -->
+            <div class="pomodoro-container">
+                <div class="pomodoro-main">
+                    <div class="timer-container">
+                        <div class="mode-selector">
+                            <button class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+                            <button class="mode-btn" data-mode="short-break">Short Break</button>
+                            <button class="mode-btn" data-mode="long-break">Long Break</button>
+                        </div>
+                        
+                        <div class="timer-display">
+                            <div class="time-circle">
+                                <svg class="progress-ring" width="300" height="300">
+                                    <circle class="progress-ring-circle" stroke-width="8" fill="transparent" r="140" cx="150" cy="150"/>
+                                </svg>
+                                <div class="time-text">
+                                    <span id="minutes">25</span>:<span id="seconds">00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timer-controls">
+                            <button id="startBtn" class="control-btn start">▶ Start</button>
+                            <button id="pauseBtn" class="control-btn pause" disabled>⏸ Pause</button>
+                            <button id="resetBtn" class="control-btn reset">⏹ Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="tasks-section">
+                        <h3>Tasks</h3>
+                        <div class="task-input">
+                            <input type="text" id="taskInput" placeholder="Add a new task...">
+                            <button id="addTaskBtn">+ Add</button>
+                        </div>
+                        <div class="tasks-list" id="tasksList"></div>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-value" id="completedPomodoros">0</span>
+                                <span class="stat-label">Pomodoros</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="completedTasks">0</span>
+                                <span class="stat-label">Tasks Done</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="productivityScore">0</span>
+                                <span class="stat-label">Score</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memory Game App -->
+        <div class="app-container memory-app">
+            <!-- Previous Memory Game content here -->
+            <div class="memory-container">
+                <div class="game-info">
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">Time</span>
+                            <span class="stat-value" id="timer">00:00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Moves</span>
+                            <span class="stat-value" id="moves">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Score</span>
+                            <span class="stat-value" id="score">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="memoryStartBtn" class="control-btn start">🎮 Start Game</button>
+                        <button id="memoryResetBtn" class="control-btn reset">🔄 Reset</button>
+                        <select id="difficulty">
+                            <option value="easy">Easy (4x4)</option>
+                            <option value="medium" selected>Medium (4x5)</option>
+                            <option value="hard">Hard (5x6)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="game-board" id="gameBoard"></div>
+
+                <div class="game-over hidden" id="gameOver">
+                    <div class="result-card">
+                        <h2>🎉 Congratulations!</h2>
+                        <div class="final-stats">
+                            <div class="final-stat">
+                                <span>Time:</span>
+                                <span id="finalTime">00:00</span>
+                            </div>
+                            <div class="final-stat">
+                                <span>Moves:</span>
+                                <span id="finalMoves">0</span>
+                            </div>
+                            <div class="final-stat">
+                                <span>Score:</span>
+                                <span id="finalScore">0</span>
+                            </div>
+                            <div class="final-stat">
+                                <span>Rating:</span>
+                                <span id="rating">⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <button id="playAgainBtn" class="control-btn start">🔄 Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawing App -->
+        <div class="app-container drawing-app">
+            <div class="drawing-container">
+                <div class="drawing-header">
+                    <h2 class="drawing-title">🎨 Creative Canvas</h2>
+                    <div class="drawing-controls">
+                        <button id="saveBtn" class="control-btn save">💾 Save</button>
+                        <button id="clearBtn" class="control-btn clear">🗑️ Clear</button>
+                        <button id="undoBtn" class="control-btn undo" disabled>↶ Undo</button>
+                        <button id="redoBtn" class="control-btn redo" disabled>↷ Redo</button>
+                    </div>
+                </div>
+
+                <div class="drawing-main">
+                    <div class="toolbar">
+                        <div class="tool-section">
+                            <div class="tool-section-title">🛠️ Tools</div>
+                            <div class="tools-grid">
+                                <button class="tool-btn active" data-tool="pencil">
+                                    <span>✏️</span>
+                                    <span class="tool-label">Pencil</span>
+                                </button>
+                                <button class="tool-btn" data-tool="eraser">
+                                    <span>🧽</span>
+                                    <span class="tool-label">Eraser</span>
+                                </button>
+                                <button class="tool-btn" data-tool="line">
+                                    <span>📏</span>
+                                    <span class="tool-label">Line</span>
+                                </button>
+                                <button class="tool-btn" data-tool="rectangle">
+                                    <span>⬜</span>
+                                    <span class="tool-label">Rectangle</span>
+                                </button>
+                                <button class="tool-btn" data-tool="circle">
+                                    <span>⭕</span>
+                                    <span class="tool-label">Circle</span>
+                                </button>
+                                <button class="tool-btn" data-tool="text">
+                                    <span>🔤</span>
+                                    <span class="tool-label">Text</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tool-section">
+                            <div class="tool-section-title">🎨 Colors</div>
+                            <div class="color-palette">
+                                <button class="color-btn active" style="background: #000000;" data-color="#000000"></button>
+                                <button class="color-btn" style="background: #e74c3c;" data-color="#e74c3c"></button>
+                                <button class="color-btn" style="background: #3498db;" data-color="#3498db"></button>
+                                <button class="color-btn" style="background: #2ecc71;" data-color="#2ecc71"></button>
+                                <button class="color-btn" style="background: #f39c12;" data-color="#f39c12"></button>
+                                <button class="color-btn" style="background: #9b59b6;" data-color="#9b59b6"></button>
+                                <button class="color-btn" style="background: #1abc9c;" data-color="#1abc9c"></button>
+                                <button class="color-btn" style="background: #34495e;" data-color="#34495e"></button>
+                            </div>
+                            <div class="custom-color">
+                                <label for="colorPicker">Custom:</label>
+                                <input type="color" id="colorPicker" value="#000000">
+                            </div>
+                        </div>
+
+                        <div class="tool-section">
+                            <div class="tool-section-title">📏 Brush Size</div>
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>Size:</span>
+                                    <span id="brushSizeValue">5px</span>
+                                </div>
+                                <input type="range" min="1" max="50" value="5" class="slider" id="brushSize">
+                            </div>
+                        </div>
+
+                        <div class="tool-section">
+                            <div class="tool-section-title">🔄 Opacity</div>
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>Opacity:</span>
+                                    <span id="opacityValue">100%</span>
+                                </div>
+                                <input type="range" min="1" max="100" value="100" class="slider" id="opacity">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drawing-area">
+                        <div class="canvas-container">
+                            <canvas id="drawingCanvas" width="800" height="500"></canvas>
+                        </div>
+                        <div class="drawing-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="drawingTime">00:00</span>
+                                <span class="stat-label">Time</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="strokeCount">0</span>
+                                <span class="stat-label">Strokes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="drawingScore">0</span>
+                                <span class="stat-label">Score</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery">
+                    <h3 class="gallery-title">🎨 Your Gallery</h3>
+                    <div class="gallery-grid" id="galleryGrid">
+                        <!-- Gallery items will be added here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

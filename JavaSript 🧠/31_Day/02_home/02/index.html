@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainBoost - Memory Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 BrainBoost</h1>
+            <div class="theme-switcher">
+                <button class="theme-btn active" data-theme="light">☀️</button>
+                <button class="theme-btn" data-theme="dark">🌙</button>
+                <button class="theme-btn" data-theme="ocean">🌊</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-info">
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Time</span>
+                        <span class="stat-value" id="timer">00:00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Moves</span>
+                        <span class="stat-value" id="moves">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Score</span>
+                        <span class="stat-value" id="score">0</span>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="startBtn" class="control-btn start">🎮 Start Game</button>
+                    <button id="resetBtn" class="control-btn reset">🔄 Reset</button>
+                    <select id="difficulty">
+                        <option value="easy">Easy (4x4)</option>
+                        <option value="medium" selected>Medium (4x5)</option>
+                        <option value="hard">Hard (5x6)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="game-board" id="gameBoard"></div>
+
+            <div class="game-over hidden" id="gameOver">
+                <div class="result-card">
+                    <h2>🎉 Congratulations!</h2>
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <span>Time:</span>
+                            <span id="finalTime">00:00</span>
+                        </div>
+                        <div class="final-stat">
+                            <span>Moves:</span>
+                            <span id="finalMoves">0</span>
+                        </div>
+                        <div class="final-stat">
+                            <span>Score:</span>
+                            <span id="finalScore">0</span>
+                        </div>
+                        <div class="final-stat">
+                            <span>Rating:</span>
+                            <span id="rating">⭐⭐⭐</span>
+                        </div>
+                    </div>
+                    <button id="playAgainBtn" class="control-btn start">🔄 Play Again</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
