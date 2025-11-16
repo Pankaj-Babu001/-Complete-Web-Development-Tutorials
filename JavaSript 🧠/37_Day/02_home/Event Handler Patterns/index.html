@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler Patterns - this Binding</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Event Handler Patterns</h1>
+        <p class="subtitle">Exploring different approaches to handling <code>this</code> binding in JavaScript</p>
+    </header>
+
+    <section class="section">
+        <h2><span class="icon">📚</span> Introduction</h2>
+        <p>This demo shows three different approaches to handling <code>this</code> binding in event handlers. Each approach solves the problem of maintaining the correct <code>this</code> context when methods are used as event handlers.</p>
+
+        <div class="code-block">
+            // The Problem: 'this' context loss in event handlers
+            class ToggleSwitch {
+            constructor() {
+            this.isOn = false;
+            this.button = document.createElement('button');
+
+            // This won't work correctly - 'this' will be the button element
+            // this.button.addEventListener('click', this.toggle);
+            }
+
+            toggle() {
+            this.isOn = !this.isOn;
+            console.log("Toggle state:", this.isOn);
+            }
+            }
+        </div>
+    </section>
+
+    <section class="section">
+        <h2><span class="icon">🔧</span> Implementation Examples</h2>
+        <p>Click the buttons below to see how each approach handles the <code>this</code> context differently.</p>
+
+        <div class="toggle-container">
+            <!-- Approach 1: bind() -->
+            <div class="toggle-box">
+                <h3>1. bind() Approach</h3>
+                <div class="code-block">
+                    // Using bind() to permanently fix 'this'
+                    this.button.addEventListener('click',
+                    this.toggle.bind(this));
+                </div>
+                <button class="toggle-button" id="bind-toggle">Toggle Switch</button>
+                <div id="bind-status" class="status off">Status: OFF</div>
+                <div class="explanation">
+                    <p><strong>How it works:</strong> <code>bind()</code> creates a new function with <code>this</code> permanently bound to the class instance.</p>
+                    <p><strong>Pros:</strong> Explicit binding, works in all browsers</p>
+                    <p><strong>Cons:</strong> Creates a new function each time</p>
+                </div>
+            </div>
+
+            <!-- Approach 2: Arrow Function Wrapper -->
+            <div class="toggle-box">
+                <h3>2. Arrow Function Wrapper</h3>
+                <div class="code-block">
+                    // Using arrow function to preserve 'this'
+                    this.button.addEventListener('click',
+                    () => this.toggle());
+                </div>
+                <button class="toggle-button" id="arrow-toggle">Toggle Switch</button>
+                <div id="arrow-status" class="status off">Status: OFF</div>
+                <div class="explanation">
+                    <p><strong>How it works:</strong> Arrow functions don't have their own <code>this</code>, so they inherit it from the surrounding scope.</p>
+                    <p><strong>Pros:</strong> Clean syntax, no need to manually bind</p>
+                    <p><strong>Cons:</strong> Creates a new function on each call</p>
+                </div>
+            </div>
+
+            <!-- Approach 3: Class Field Arrow Function -->
+            <div class="toggle-box">
+                <h3>3. Class Field Arrow Function</h3>
+                <div class="code-block">
+                    // Using class field arrow function
+                    toggle = () => {
+                    this.isOn = !this.isOn;
+                    console.log("Toggle state:", this.isOn);
+                    }
+                </div>
+                <button class="toggle-button" id="class-arrow-toggle">Toggle Switch</button>
+                <div id="class-arrow-status" class="status off">Status: OFF</div>
+                <div class="explanation">
+                    <p><strong>How it works:</strong> Class field arrow functions are automatically bound to the instance.</p>
+                    <p><strong>Pros:</strong> Cleanest syntax, method is bound at creation</p>
+                    <p><strong>Cons:</strong> Requires modern JavaScript (ES6+)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="console" id="console">
+            <div>Console output will appear here...</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2><span class="icon">📊</span> Comparison Table</h2>
+        <table class="comparison-table">
+            <thead>
+            <tr>
+                <th>Approach</th>
+                <th>Syntax</th>
+                <th>Performance</th>
+                <th>Browser Support</th>
+                <th>Use Case</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><strong>bind()</strong></td>
+                <td><code>method.bind(this)</code></td>
+                <td>Creates new function each time</td>
+                <td>Excellent (ES5+)</td>
+                <td>When you need explicit control</td>
+            </tr>
+            <tr>
+                <td><strong>Arrow Wrapper</strong></td>
+                <td><code>() => method()</code></td>
+                <td>Creates new function each time</td>
+                <td>Good (ES6+)</td>
+                <td>Simple cases with modern JS</td>
+            </tr>
+            <tr>
+                <td><strong>Class Field Arrow</strong></td>
+                <td><code>method = () => { }</code></td>
+                <td>Function created once</td>
+                <td>Good (ES6+)</td>
+                <td>Modern projects, React components</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="section">
+        <h2><span class="icon">💡</span> Key Takeaways</h2>
+        <ul style="margin-left: 20px; line-height: 1.6;">
+            <li><strong>Arrow functions</strong> don't have their own <code>this</code> - they inherit it from their surrounding scope</li>
+            <li><strong>bind()</strong> creates a new function with permanently bound <code>this</code> context</li>
+            <li><strong>Class field arrow functions</strong> are automatically bound to the class instance</li>
+            <li>Regular functions have their own <code>this</code> which depends on how they're called</li>
+            <li>In event handlers, <code>this</code> typically refers to the element that received the event</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Event Handler Patterns - Understanding <code>this</code> Binding in JavaScript</p>
+    </footer>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

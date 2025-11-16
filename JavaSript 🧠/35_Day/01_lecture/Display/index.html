@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Users Gallery</title>
+    <meta name="description" content="Discover amazing GitHub developers from around the world">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="header" role="banner">
+    <div class="container">
+        <h1>🌟 GitHub Users Gallery</h1>
+        <p class="subtitle">Discover amazing developers from around the world</p>
+
+        <div class="search-section">
+            <div class="search-container">
+                <label for="searchInput" class="sr-only">Search users by username</label>
+                <input
+                        type="text"
+                        class="search-input"
+                        id="searchInput"
+                        placeholder="🔍 Search users by username..."
+                        aria-describedby="searchHelp"
+                >
+                <div id="searchSuggestions" class="search-suggestions" aria-live="polite"></div>
+            </div>
+
+            <div class="filter-controls">
+                <label for="sortSelect" class="filter-label">Sort by:</label>
+                <select id="sortSelect" class="sort-select" aria-label="Sort users by">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="id-asc">ID (Low to High)</option>
+                    <option value="id-desc">ID (High to Low)</option>
+                </select>
+            </div>
+        </div>
+
+        <p id="searchHelp" class="search-help">
+            Type to search GitHub users. Use up/down arrows to navigate suggestions.
+        </p>
+    </div>
+</header>
+
+<main id="main-content" role="main">
+    <div class="container">
+        <div id="users-container" aria-live="polite"></div>
+    </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <p>Pankaj</p>
+    </div>
+</footer>
+
+<div id="loadingOverlay" class="loading-overlay" aria-live="polite" aria-busy="true">
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading amazing developers...</p>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

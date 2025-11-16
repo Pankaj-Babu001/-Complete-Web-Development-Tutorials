@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Event Handler Patterns - JavaScript this Binding</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            position: relative;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0 5px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        @media (max-width: 1100px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .demo-section {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .demo-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            color: var(--secondary);
+        }
+
+        .section-title .icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+        }
+
+        .toggle-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .toggle-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toggle-box {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .toggle-box:hover {
+            border-color: var(--primary);
+        }
+
+        .toggle-box h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-box h3 .method-badge {
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin-left: 10px;
+        }
+
+        .toggle-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .toggle-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .toggle-button:active::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        .status {
+            text-align: center;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .on {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            color: white;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .off {
+            background: linear-gradient(to right, #f44336, #FF9800);
+            color: white;
+            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            margin: 15px 0;
+            border-left: 4px solid var(--success);
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .console {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            font-family: 'Fira Code', 'Courier New', monospace;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .console-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .console-controls button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+
+        .console-entry {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #333;
+        }
+
+        .console-timestamp {
+            color: #6a9955;
+            font-size: 0.8rem;
+        }
+
+        .console-method {
+            color: #569cd6;
+            font-weight: bold;
+        }
+
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent);
+        }
+
+        .comparison-section {
+            grid-column: 1 / -1;
+        }
+
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .comparison-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .comparison-card .icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .pros, .cons {
+            padding: 15px;
+            border-radius: var(--border-radius);
+        }
+
+        .pros {
+            background: rgba(76, 201, 240, 0.1);
+            border-left: 4px solid var(--success);
+        }
+
+        .cons {
+            background: rgba(247, 37, 133, 0.1);
+            border-left: 4px solid var(--danger);
+        }
+
+        .pros h4, .cons h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pros ul, .cons ul {
+            margin-left: 20px;
+        }
+
+        .pros li, .cons li {
+            margin-bottom: 8px;
+        }
+
+        .visualization {
+            margin-top: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .this-value {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            margin: 10px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .this-value .label {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .this-value .value {
+            font-family: 'Fira Code', monospace;
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--dark);
+            color: white;
+            margin-top: 40px;
+        }
+
+        .animation-area {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(to right, #4361ee, #3a0ca3);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-item {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Advanced Event Handler Patterns</h1>
+        <p class="subtitle">Mastering <span class="badge">this</span> Binding in JavaScript</p>
+        <div class="animation-area">
+            <div class="floating-item" style="width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-item" style="width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: 1s;"></div>
+            <div class="floating-item" style="width: 100px; height: 100px; top: 40%; left: 40%; animation-delay: 2s;"></div>
+            <div class="floating-item" style="width: 40px; height: 40px; top: 10%; left: 70%; animation-delay: 3s;"></div>
+            <h2 style="color: white; text-align: center; z-index: 1; position: relative;">Interactive Learning Experience</h2>
+        </div>
+    </header>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Binding Methods</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">12+</div>
+            <div class="stat-label">Interactive Examples</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Practical Code</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">ES6+</div>
+            <div class="stat-label">Modern JavaScript</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="demo-section">
+            <div class="section-title">
+                <span class="icon">🔧</span>
+                <h2>Method Binding Approaches</h2>
+            </div>
+
+            <div class="toggle-container">
+                <!-- Approach 1: bind() -->
+                <div class="toggle-box">
+                    <h3>1. bind() Method <span class="method-badge">ES5+</span></h3>
+                    <div class="code-block">
+                        // Using bind() to permanently fix 'this'
+                        this.button.addEventListener('click',
+                        this.toggle.bind(this));
+                    </div>
+                    <button class="toggle-button" id="bind-toggle">Toggle Switch</button>
+                    <div id="bind-status" class="status off">Status: OFF</div>
+                    <div class="this-value">
+                        <span class="label">this refers to:</span>
+                        <span class="value" id="bind-this">ToggleSwitchBind instance</span>
+                    </div>
+                </div>
+
+                <!-- Approach 2: Arrow Function Wrapper -->
+                <div class="toggle-box">
+                    <h3>2. Arrow Function Wrapper <span class="method-badge">ES6+</span></h3>
+                    <div class="code-block">
+                        // Using arrow function to preserve 'this'
+                        this.button.addEventListener('click',
+                        () => this.toggle());
+                    </div>
+                    <button class="toggle-button" id="arrow-toggle">Toggle Switch</button>
+                    <div id="arrow-status" class="status off">Status: OFF</div>
+                    <div class="this-value">
+                        <span class="label">this refers to:</span>
+                        <span class="value" id="arrow-this">ToggleSwitchArrow instance</span>
+                    </div>
+                </div>
+
+                <!-- Approach 3: Class Field Arrow Function -->
+                <div class="toggle-box">
+                    <h3>3. Class Field Arrow Function <span class="method-badge">ES6+</span></h3>
+                    <div class="code-block">
+                        // Using class field arrow function
+                        toggle = () => {
+                        this.isOn = !this.isOn;
+                        console.log("Toggle state:", this.isOn);
+                        }
+                    </div>
+                    <button class="toggle-button" id="class-arrow-toggle">Toggle Switch</button>
+                    <div id="class-arrow-status" class="status off">Status: OFF</div>
+                    <div class="this-value">
+                        <span class="label">this refers to:</span>
+                        <span class="value" id="class-arrow-this">ToggleSwitchClassArrow instance</span>
+                    </div>
+                </div>
+
+                <!-- Approach 4: Problem Example -->
+                <div class="toggle-box">
+                    <h3>4. Problem Example <span class="method-badge">Broken</span></h3>
+                    <div class="code-block">
+                        // This won't work correctly
+                        this.button.addEventListener('click',
+                        this.toggle);
+                        // 'this' will be the button element, not the class instance
+                    </div>
+                    <button class="toggle-button" id="problem-toggle">Toggle Switch</button>
+                    <div id="problem-status" class="status off">Status: OFF</div>
+                    <div class="this-value">
+                        <span class="label">this refers to:</span>
+                        <span class="value" id="problem-this">HTMLButtonElement</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h4>Understanding the Problem</h4>
+                <p>In JavaScript, the value of <code>this</code> depends on how a function is called. When a method is used as an event handler, <code>this</code> typically refers to the element that received the event, not the object the method belongs to. These approaches solve that problem.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <div class="section-title">
+                <span class="icon">📊</span>
+                <h2>Live Console Output</h2>
+            </div>
+
+            <div class="console">
+                <div class="console-header">
+                    <span>Console Output</span>
+                    <div class="console-controls">
+                        <button id="clear-console">Clear</button>
+                        <button id="export-console">Export</button>
+                    </div>
+                </div>
+                <div id="console-output">
+                    <div class="console-entry">
+                        <span class="console-timestamp" id="initial-time"></span>
+                        <span class="console-method">[INFO]</span> Console initialized. Click toggle buttons to see output.
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation">
+                <h4>Real-time Analysis</h4>
+                <p>The console shows exactly what happens when each toggle button is clicked. Notice how the <code>this</code> value differs between approaches, and how the problem example fails to maintain state correctly.</p>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <div class="section-title">
+                <span class="icon">📈</span>
+                <h2>Method Comparison & Analysis</h2>
+            </div>
+
+            <div class="comparison-cards">
+                <div class="comparison-card">
+                    <h3><span class="icon">🔗</span> bind() Method</h3>
+                    <p>Creates a new function that, when called, has its <code>this</code> keyword set to the provided value.</p>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>✅ Pros</h4>
+                            <ul>
+                                <li>Explicit binding control</li>
+                                <li>Works in all modern browsers</li>
+                                <li>Can bind specific arguments</li>
+                                <li>Clear intent in code</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>❌ Cons</h4>
+                            <ul>
+                                <li>Creates a new function each time</li>
+                                <li>More verbose syntax</li>
+                                <li>Harder to unbind events</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <h3><span class="icon">🏹</span> Arrow Function Wrapper</h3>
+                    <p>Arrow functions don't have their own <code>this</code> context, so they inherit it from the enclosing scope.</p>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>✅ Pros</h4>
+                            <ul>
+                                <li>Clean, concise syntax</li>
+                                <li>No manual binding required</li>
+                                <li>Intuitive for modern JS developers</li>
+                                <li>Easy to read and understand</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>❌ Cons</h4>
+                            <ul>
+                                <li>Creates a new function on each call</li>
+                                <li>Cannot be used as constructors</li>
+                                <li>No <code>arguments</code> object</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <h3><span class="icon">⚡</span> Class Field Arrow Function</h3>
+                    <p>Class field arrow functions are automatically bound to the class instance where they're defined.</p>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>✅ Pros</h4>
+                            <ul>
+                                <li>Cleanest syntax</li>
+                                <li>Method bound at creation time</li>
+                                <li>No performance overhead on call</li>
+                                <li>Ideal for React components</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>❌ Cons</h4>
+                            <ul>
+                                <li>Requires modern JavaScript</li>
+                                <li>Not suitable for prototype methods</li>
+                                <li>Each instance gets its own method copy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="visualization">
+            <div class="section-title">
+                <span class="icon">🔍</span>
+                <h2>this Binding Visualization</h2>
+            </div>
+
+            <div class="explanation">
+                <p>The diagram below shows how <code>this</code> is bound in different contexts. Hover over each element to see details.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="this-value" style="flex-direction: column; align-items: flex-start;">
+                    <span class="label">Global Context</span>
+                    <span class="value">window (browser) / global (Node.js)</span>
+                </div>
+                <div class="this-value" style="flex-direction: column; align-items: flex-start;">
+                    <span class="label">Object Method</span>
+                    <span class="value">The object itself</span>
+                </div>
+                <div class="this-value" style="flex-direction: column; align-items: flex-start;">
+                    <span class="label">Event Handler</span>
+                    <span class="value">The element that received the event</span>
+                </div>
+                <div class="this-value" style="flex-direction: column; align-items: flex-start;">
+                    <span class="label">Arrow Function</span>
+                    <span class="value">Inherited from enclosing scope</span>
+                </div>
+            </div>
+
+            <div class="code-block" style="margin-top: 20px;">
+                // Summary of this binding rules:
+                // 1. Global: this = global object (window/global)
+                // 2. Method: this = object the method belongs to
+                // 3. Function: this = undefined (strict mode) or global
+                // 4. Event: this = element that received the event
+                // 5. Arrow: this = inherited from parent scope
+                // 6. Constructor: this = the newly created object
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Advanced Event Handler Patterns - Mastering JavaScript <code>this</code> Binding</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Created with modern ES6+ features and interactive learning in mind</p>
+    </footer>
+</div>
+
+<script>
+    // Custom console implementation
+    const consoleOutput = document.getElementById('console-output');
+    const initialTime = document.getElementById('initial-time');
+
+    // Set initial timestamp
+    const now = new Date();
+    initialTime.textContent = now.toLocaleTimeString();
+
+    // Console functions
+    function logToConsole(method, ...args) {
+        const timestamp = new Date().toLocaleTimeString();
+        const message = args.map(arg =>
+            typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
+        ).join(' ');
+
+        const logEntry = document.createElement('div');
+        logEntry.className = 'console-entry';
+        logEntry.innerHTML = `
+                <span class="console-timestamp">${timestamp}</span>
+                <span class="console-method">[${method}]</span> ${message}
+            `;
+        consoleOutput.appendChild(logEntry);
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+
+        // Also log to browser console
+        if (method === 'INFO') console.info(...args);
+        else if (method === 'ERROR') console.error(...args);
+        else console.log(...args);
+    }
+
+    // Console controls
+    document.getElementById('clear-console').addEventListener('click', () => {
+        consoleOutput.innerHTML = '';
+        const timestamp = new Date().toLocaleTimeString();
+        logToConsole('INFO', 'Console cleared');
+    });
+
+    document.getElementById('export-console').addEventListener('click', () => {
+        logToConsole('INFO', 'Export feature would be implemented in a real application');
+    });
+
+    // Approach 1: Using bind()
+    class ToggleSwitchBind {
+        constructor(buttonId, statusId, thisId) {
+            this.isOn = false;
+            this.button = document.getElementById(buttonId);
+            this.statusElement = document.getElementById(statusId);
+            this.thisElement = document.getElementById(thisId);
+
+            // Using bind() to fix 'this'
+            this.button.addEventListener('click', this.toggle.bind(this));
+
+            this.updateDisplay();
+            logToConsole('INFO', `[bind()] ToggleSwitchBind instance created`);
+        }
+
+        toggle() {
+            this.isOn = !this.isOn;
+            logToConsole('bind()', `Toggle state: ${this.isOn}, this is:`, this);
+            this.updateDisplay();
+            this.thisElement.textContent = 'ToggleSwitchBind instance';
+        }
+
+        updateDisplay() {
+            this.statusElement.textContent = `Status: ${this.isOn ? 'ON' : 'OFF'}`;
+            this.statusElement.className = `status ${this.isOn ? 'on' : 'off'}`;
+        }
+    }
+
+    // Approach 2: Using arrow function wrapper
+    class ToggleSwitchArrow {
+        constructor(buttonId, statusId, thisId) {
+            this.isOn = false;
+            this.button = document.getElementById(buttonId);
+            this.statusElement = document.getElementById(statusId);
+            this.thisElement = document.getElementById(thisId);
+
+            // Using arrow function to preserve 'this'
+            this.button.addEventListener('click', () => this.toggle());
+
+            this.updateDisplay();
+            logToConsole('INFO', `[Arrow Wrapper] ToggleSwitchArrow instance created`);
+        }
+
+        toggle() {
+            this.isOn = !this.isOn;
+            logToConsole('Arrow Wrapper', `Toggle state: ${this.isOn}, this is:`, this);
+            this.updateDisplay();
+            this.thisElement.textContent = 'ToggleSwitchArrow instance';
+        }
+
+        updateDisplay() {
+            this.statusElement.textContent = `Status: ${this.isOn ? 'ON' : 'OFF'}`;
+            this.statusElement.className = `status ${this.isOn ? 'on' : 'off'}`;
+        }
+    }
+
+    // Approach 3: Using class field arrow function
+    class ToggleSwitchClassArrow {
+        constructor(buttonId, statusId, thisId) {
+            this.isOn = false;
+            this.button = document.getElementById(buttonId);
+            this.statusElement = document.getElementById(statusId);
+            this.thisElement = document.getElementById(thisId);
+
+            // Class field arrow function is automatically bound
+            this.button.addEventListener('click', this.toggle);
+
+            this.updateDisplay();
+            logToConsole('INFO', `[Class Arrow] ToggleSwitchClassArrow instance created`);
+        }
+
+        // Class field arrow function
+        toggle = () => {
+            this.isOn = !this.isOn;
+            logToConsole('Class Arrow', `Toggle state: ${this.isOn}, this is:`, this);
+            this.updateDisplay();
+            this.thisElement.textContent = 'ToggleSwitchClassArrow instance';
+        }
+
+        updateDisplay() {
+            this.statusElement.textContent = `Status: ${this.isOn ? 'ON' : 'OFF'}`;
+            this.statusElement.className = `status ${this.isOn ? 'on' : 'off'}`;
+        }
+    }
+
+    // Approach 4: Problem example (broken this binding)
+    class ToggleSwitchProblem {
+        constructor(buttonId, statusId, thisId) {
+            this.isOn = false;
+            this.button = document.getElementById(buttonId);
+            this.statusElement = document.getElementById(statusId);
+            this.thisElement = document.getElementById(thisId);
+
+            // This won't work correctly - 'this' will be the button
+            this.button.addEventListener('click', this.toggle);
+
+            this.updateDisplay();
+            logToConsole('INFO', `[Problem] ToggleSwitchProblem instance created`);
+            logToConsole('ERROR', `[Problem] Warning: 'this' binding is broken!`);
+        }
+
+        toggle() {
+            // This will fail because 'this' is the button, not the class instance
+            try {
+                this.isOn = !this.isOn;
+                logToConsole('Problem', `Toggle state: ${this.isOn}, this is:`, this);
+                this.updateDisplay();
+                this.thisElement.textContent = this.constructor.name;
+            } catch (error) {
+                logToConsole('ERROR', `[Problem] Error: ${error.message}`);
+                this.thisElement.textContent = 'HTMLButtonElement (broken)';
+            }
+        }
+
+        updateDisplay() {
+            // This might not work correctly due to broken 'this' binding
+            try {
+                this.statusElement.textContent = `Status: ${this.isOn ? 'ON' : 'OFF'}`;
+                this.statusElement.className = `status ${this.isOn ? 'on' : 'off'}`;
+            } catch (error) {
+                // State won't update correctly
+            }
+        }
+    }
+
+    // Initialize all toggle switches
+    document.addEventListener('DOMContentLoaded', () => {
+        new ToggleSwitchBind('bind-toggle', 'bind-status', 'bind-this');
+        new ToggleSwitchArrow('arrow-toggle', 'arrow-status', 'arrow-this');
+        new ToggleSwitchClassArrow('class-arrow-toggle', 'class-arrow-status', 'class-arrow-this');
+        new ToggleSwitchProblem('problem-toggle', 'problem-status', 'problem-this');
+
+        logToConsole('INFO', "All toggle switches initialized. Click buttons to test different 'this' binding approaches.");
+    });
+</script>
+</body>
+</html>

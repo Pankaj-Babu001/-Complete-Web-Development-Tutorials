@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+
+        #promise-status {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none; /* Override JS inline border */
+            background: #ffffff;
+        }
+
+        #status-list > div {
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 4px !important; /* Ensure separation */
+        }
+
+        #order-controls button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        #order-controls button:hover {
+            opacity: 0.9;
+        }
+
+        /* Style for the 'Start Ordering' button */
+        #order-controls button:nth-child(1) {
+            background-color: #e21b70; /* Zomato/Swiggy-like primary color */
+            color: white;
+        }
+
+        /* Style for the 'Promise.all Demo' button */
+        #order-controls button:nth-child(2) {
+            background-color: #007bff; /* Blue for parallel action */
+            color: white;
+        }
+
+        /* Style for the 'Clear Status' button */
+        #order-controls button:nth-child(3) {
+            background-color: #6c757d; /* Grey for utility action */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Async/Await Zomato Demo</h1>
+<script src="./01_index.js"></script>
+</body>
+</html>
