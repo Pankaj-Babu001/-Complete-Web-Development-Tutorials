@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/Logo3.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+<header class="page-header">
+    <section class="hero">
+        <nav class="hero-nav">
+            <div class="hero-logo">
+                <img src="./images/Logo3.png" alt="Pankaj's Game Studio Logo" />
+                <span class="logo-text">Pankaj's</span>
+            </div>
+        </nav>
+
+        <div class="hero-text">
+            <h5 class="tagline">Upcoming Game</h5>
+            <h1 class="title">
+                TRAVIS <span>SCOTT PRO</span><br />
+                <strong class="war">WAR</strong> TOUR
+            </h1>
+            <div class="buttons">
+                <button class="get-launcher filled">Download Launcher</button>
+                <a href="https://www.youtube.com/watch?v=wYeFAlVC8qU&list=RDwYeFAlVC8qU&start_radio=1" class="watch-trailer" aria-label="Watch the official game trailer" target="_blank">▶ Watch Trailer</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./images/hero-image.png" alt="Main Game Character preparing for battle" />
+        </div>
+        <div class="hero-shadow-text">Warriors</div>
+    </section>
+</header>
+
+
+<main>
+    <section class="expert-section" id="about">
+        <div class="expert-container">
+            <div class="expert-left">
+                <div class="image-wrapper">
+                    <img src="./images/about-img.png" alt="Game development team working on computers" class="team-image" />
+                    <div class="circle-badge">
+                        <img src="./images/Ticker.png" alt="rotating information ticker" class="autoRotate">
+                    </div>
+                </div>
+            </div>
+
+            <div class="expert-right">
+                <p class="section-tag">Since from 1990</p>
+                <h2 class="expert-title">
+                    We bring together top<br />
+                    experts <span>& talented</span>
+                </h2>
+                <p class="expert-desc">
+                    Driven by innovation and creativity, we’re constantly evolving and expanding our platform to bring
+                    you the latest and greatest in gaming.
+                </p>
+
+                <ul class="expert-features">
+                    <li>Community Engagement Excellence</li>
+                    <li>Quality Indie Game Development</li>
+                </ul>
+
+                <a href="#about" class="read-more-btn">READ MORE →</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="team-section">
+        <div class="team-header autoShow">
+            <p class="sub-heading">OUR TEAM</p>
+            <h2 class="main-heading">OUR AVENGERS</h2>
+        </div>
+
+        <div class="team-members">
+            <div class="team-member">
+                <img src="./images/team-01.png" alt="Portrait of team member James Taylor" class="imageReveal">
+                <p class="role">Developer</p>
+                <h3 class="name">James Taylor</h3>
+            </div>
+
+            <div class="team-member">
+                <img src="./images/team-02.png" alt="Portrait of team member Katty Williams" class="imageReveal">
+                <p class="role">Motion Designer</p>
+                <h3 class="name">Katty Williams</h3>
+            </div>
+
+            <div class="team-member">
+                <img src="./images/team-03.png" alt="Portrait of team member Harry Newman" class="imageReveal">
+                <p class="role">Frontend Developer</p>
+                <h3 class="name">Harry Newman</h3>
+            </div>
+
+            <div class="team-member">
+                <img src="./images/team-04.png" alt="Portrait of team member Anna Marry Scott" class="imageReveal">
+                <p class="role">UI/UX Designer</p>
+                <h3 class="name">Anna Marry Scott</h3>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="timeline-section">
+        <div class="timeline-item left fadeUp">
+            <div class="timeline-img content-right">
+                <img src="./images/timeline-01.png" alt="Team members celebrating a project milestone">
+            </div>
+            <div class="timeline-content">
+                <h4 class="timeline-label">JOURNEY WAS STARTED</h4>
+                <h2 class="timeline-year">1990</h2>
+                <p>While the adoption of cryptocurrency for everyday transactions is growing.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right fadeUp">
+            <div class="timeline-content content-right">
+                <h4 class="timeline-label">GET REWARDS</h4>
+                <h2 class="timeline-year">2015</h2>
+                <p>While the adoption of cryptocurrency for everyday transactions is growing.</p>
+            </div>
+            <div class="timeline-img">
+                <img src="./images/timeline-02.png" alt="Team celebrating an award with confetti">
+            </div>
+        </div>
+
+        <div class="timeline-item left fadeUp">
+            <div class="timeline-img content-right">
+                <img src="./images/timeline-03.png" alt="A gaming console and monitor">
+            </div>
+            <div class="timeline-content">
+                <h4 class="timeline-label">LAUNCH GAME STUDIO</h4>
+                <h2 class="timeline-year">2020</h2>
+                <p>Our official entry into AR/VR-based game development and esports projects.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="services-section">
+        <div class="services-wrapper">
+            <ul class="services-list">
+                <li class="autoBlur">GAME SERVER</li>
+                <li class="autoBlur">GAME TESTING</li>
+                <li class="autoBlur">AR/VR INTEGRATION</li>
+                <li class="autoBlur">GAME DESIGN</li>
+                <li class="autoBlur">GAME DEVELOPMENT</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="scroll-container">
+        <div class="horizontal-scroll-wrapper">
+            <div class="horizontal-scroll">
+                <div class="card">Game<br>Development</div>
+                <div class="card">Indie<br>Publishing</div>
+                <div class="card">3D Game<br>Design</div>
+                <div class="card">UI/UX<br>Experience</div>
+                <div class="card">VR/AR<br>Simulation</div>
+                <div class="card">Game<br>Development</div>
+                <div class="card">Indie<br>Publishing</div>
+                <div class="card">3D Game<br>Design</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer class="scrolling-footer">
+    <div class="scrolling-content">
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+        <span>😊 Copyright 2025 by Pankaj's - All rights reserved 🚀</span>
+    </div>
+</footer>
+
+</body>
+
+</html>

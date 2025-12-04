@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #000;
+}
+
+.moon {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    background: #000;
+    border-radius: 50%;
+    animation: moon-bg 5s 0.1s linear infinite alternate;
+}
+
+.moon::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 50%;
+    z-index: -1;
+    animation: moon-light 5s 0.1s linear infinite alternate;
+}
+
+@keyframes moon-bg {
+
+    0%,
+    20% {
+        background: #000;
+    }
+
+    50% {
+        background: #fff;
+    }
+
+    80%,
+    100% {
+        background: #000;
+    }
+}
+
+@keyframes moon-light {
+    0% {
+        transform: translateX(25px) scale(0.9);
+        box-shadow: none;
+    }
+
+    50% {
+        transform: translate(0px, 0px) scale(1.02);
+        box-shadow: 0px 0px 40px #fff, 0px 0px 80px 2px #fff;
+    }
+
+    100% {
+        transform: translateX(-25px) scale(0.9);
+        box-shadow: none;
+    }
+}
