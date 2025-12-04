@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imperative vs Declarative DOM</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Imperative vs Declarative DOM Manipulation</h1>
+    
+    <div class="comparison">
+      <!-- Imperative Approach -->
+      <div class="panel">
+        <h2>⚙️ Imperative (Vanilla JS)</h2>
+        <div id="imperative-counter" class="counter-display">0</div>
+        <div class="button-group">
+          <button class="btn-increment" onclick="imperativeIncrement()">+ Increment</button>
+          <button class="btn-decrement" onclick="imperativeDecrement()">− Decrement</button>
+          <button class="btn-reset" onclick="imperativeReset()">Reset</button>
+        </div>
+      </div>
+      
+      <!-- Declarative Approach (simulated) -->
+      <div class="panel">
+        <h2>✨ Declarative (React-style)</h2>
+        <div id="declarative-counter" class="counter-display">0</div>
+        <div class="button-group">
+          <button class="btn-increment" onclick="declarativeIncrement()">+ Increment</button>
+          <button class="btn-decrement" onclick="declarativeDecrement()">− Decrement</button>
+          <button class="btn-reset" onclick="declarativeReset()">Reset</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="explanation">
+      <h3>🔍 Key Differences:</h3>
+      
+      <div class="code-comparison">
+<span class="highlight">// IMPERATIVE: You tell HOW to do it (step-by-step)</span>
+        let count = 0;
+        function updateDisplay() {
+          const el = document.getElementById('counter');
+          el.textContent = count;  // Manually update DOM
+          if (count < 0) {
+            el.style.color = 'red';  // Manually update styles
+          } else {
+            el.style.color = 'blue';
+          }
+        }
+      </div>
+      
+      <div class="code-comparison">
+<span class="highlight">// DECLARATIVE: You tell WHAT you want (describe the outcome)</span>
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    &lt;div style={{color: count < 0 ? 'red' : 'blue'}}&gt;
+      {count}
+    &lt;/div&gt;
+  );
+  // React figures out HOW to update the DOM
+}
+      </div>
+      
+      <ul>
+        <li><strong>Imperative:</strong> You manually select elements, update their content, modify styles, and manage every detail of how the DOM changes.</li>
+        <li><strong>Declarative:</strong> You describe what the UI should look like for any given state, and React automatically figures out the most efficient way to update the DOM.</li>
+        <li><strong>Mental Model:</strong> Imperative is like giving turn-by-turn directions; Declarative is like setting a destination in GPS.</li>
+        <li><strong>Maintenance:</strong> Declarative code is easier to reason about because the UI is a direct reflection of state, not scattered DOM manipulations.</li>
+        <li><strong>React's Magic:</strong> React uses a Virtual DOM to calculate the minimal set of changes needed, making declarative code performant.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
