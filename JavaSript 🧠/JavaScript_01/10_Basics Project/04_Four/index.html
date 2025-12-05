@@ -1,0 +1,46 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="parent">
+    <div class="header">
+        <h1>💰 Income Tax Calculator</h1>
+        <p class="subtitle">Calculate your tax liability accurately</p>
+    </div>
+
+    <form>
+        <div class="input-group">
+            <label for="income">Annual Income (₹)</label>
+            <div class="input-wrapper">
+                <span class="currency-symbol">₹</span>
+                <input type="number" id="income" name="income" placeholder="Enter your annual income" required>
+            </div>
+        </div>
+
+        <button type="submit">
+            <span>Calculate Tax</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7 10L9 12L13 8M19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </form>
+
+    <div class="result-container">
+        <h2>Total Tax: ₹0</h2>
+        <div class="tax-breakdown">
+            <p>Enter your income to see tax breakdown</p>
+        </div>
+    </div>
+</div>
+
+<script src="./index.js"></script>
+</body>
+</html>
+

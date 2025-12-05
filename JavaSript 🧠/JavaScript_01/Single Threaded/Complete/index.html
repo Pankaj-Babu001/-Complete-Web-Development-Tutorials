@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Hell - Interactive Tutorial</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-code"></i>
+            <span>CallbackHub</span>
+        </div>
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#what">What is it?</a></li>
+            <li><a href="#problems">Problems</a></li>
+            <li><a href="#demo">Demo</a></li>
+            <li><a href="#comparison">Solutions</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <i class="fas fa-fire"></i>
+                    Escape Callback Hell
+                </h1>
+                <p class="subtitle">Master the Pyramid of Doom & Write Cleaner Async Code</p>
+                <p class="description">Learn why callback hell is a problem and how to escape it with modern JavaScript patterns</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-play"></i> Try Interactive Demo
+                    </button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('what').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-book"></i> Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="pyramid-visual">
+                    <div class="pyramid-level" style="--level: 1;">
+                        <span>function()</span>
+                    </div>
+                    <div class="pyramid-level" style="--level: 2;">
+                        <span>callback()</span>
+                    </div>
+                    <div class="pyramid-level" style="--level: 3;">
+                        <span>callback()</span>
+                    </div>
+                    <div class="pyramid-level" style="--level: 4;">
+                        <span>callback()</span>
+                    </div>
+                    <div class="pyramid-level" style="--level: 5;">
+                        <span>Hell 🔥</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- What is Callback Hell -->
+    <section class="section" id="what">
+        <div class="section-header">
+            <h2><i class="fas fa-question-circle"></i> What is Callback Hell?</h2>
+            <p>Understanding the Problem</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h3>Definition</h3>
+                <p>Callback Hell (Pyramid of Doom) occurs when you have deeply nested callback functions, making code difficult to read and maintain.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                <h3>Why It Happens</h3>
+                <p>JavaScript is single-threaded and asynchronous. When operations depend on each other, callbacks get nested deeper.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-wave-square"></i>
+                </div>
+                <h3>Visual Pattern</h3>
+                <p>The increasing indentation creates a pyramid-like shape, which gives it the name "Pyramid of Doom".</p>
+            </div>
+
+            <div class="info-card">
+                <div class="card-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h3>Real Impact</h3>
+                <p>It affects code readability, maintainability, debugging difficulty, and overall developer experience.</p>
+            </div>
+        </div>
+
+        <div class="code-example">
+            <h4>Classic Example</h4>
+            <div class="code-block">
+<pre>function getUserData(userId) {
+  getUser(userId, function(user) {
+    getProfile(user.id, function(profile) {
+      getSettings(profile.id, function(settings) {
+        console.log(user, profile, settings);
+        // 😫 Hard to read and maintain
+      });
+    });
+  });
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="section" id="problems">
+        <div class="section-header">
+            <h2><i class="fas fa-exclamation-triangle"></i> 8 Major Problems</h2>
+            <p>Why Callback Hell is Problematic</p>
+        </div>
+
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-number">1</div>
+                <h4><i class="fas fa-eye-slash"></i> Hard to Read</h4>
+                <p>Deeply nested code is visually confusing and difficult to follow the logic flow.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">2</div>
+                <h4><i class="fas fa-bug"></i> Hard to Debug</h4>
+                <p>Stack traces become complex and errors are difficult to pinpoint in nested callbacks.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">3</div>
+                <h4><i class="fas fa-wrench"></i> Hard to Maintain</h4>
+                <p>Adding or modifying features requires careful refactoring of deeply nested code.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">4</div>
+                <h4><i class="fas fa-flask"></i> Hard to Test</h4>
+                <p>Unit testing nested callbacks requires complex mocking and setup.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">5</div>
+                <h4><i class="fas fa-exchange-alt"></i> Inversion of Control</h4>
+                <p>You pass control to external functions, making flow control unclear.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">6</div>
+                <h4><i class="fas fa-exclamation"></i> Messy Error Handling</h4>
+                <p>Try-catch blocks don't work well with callbacks; errors are hard to handle consistently.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">7</div>
+                <h4><i class="fas fa-code"></i> Code Repetition</h4>
+                <p>Similar error handling and patterns repeat throughout nested callbacks.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="problem-number">8</div>
+                <h4><i class="fas fa-expand"></i> Variable Scope Issues</h4>
+                <p>Variables can be lost or shadowed in deeply nested scopes, causing bugs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section class="section" id="demo">
+        <div class="section-header">
+            <h2><i class="fas fa-utensils"></i> Real-World Demo</h2>
+            <p>Food Delivery System with Callback Hell</p>
+        </div>
+
+        <div class="demo-container">
+            <div class="demo-controls">
+                <button class="btn btn-primary" onclick="runFoodDelivery()">
+                    <i class="fas fa-play"></i> Start Delivery
+                </button>
+                <button class="btn btn-secondary" onclick="clearOutput()">
+                    <i class="fas fa-trash"></i> Clear Output
+                </button>
+            </div>
+
+            <div class="output-box" id="output"></div>
+
+            <div class="delivery-steps">
+                <h4><i class="fas fa-list-ol"></i> Delivery Pipeline</h4>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-icon">📦</div>
+                        <div class="step-info">
+                            <strong>Place Order</strong>
+                            <p>Customer places an order at the restaurant</p>
+                        </div>
+                    </div>
+
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+
+                    <div class="step-item">
+                        <div class="step-icon">👨‍🍳</div>
+                        <div class="step-info">
+                            <strong>Prepare Food</strong>
+                            <p>Kitchen prepares the food order</p>
+                        </div>
+                    </div>
+
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+
+                    <div class="step-item">
+                        <div class="step-icon">🚴</div>
+                        <div class="step-info">
+                            <strong>Assign Delivery</strong>
+                            <p>Delivery person is assigned</p>
+                        </div>
+                    </div>
+
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+
+                    <div class="step-item">
+                        <div class="step-icon">🛵</div>
+                        <div class="step-info">
+                            <strong>Deliver Order</strong>
+                            <p>Food is delivered to customer's address</p>
+                        </div>
+                    </div>
+
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+
+                    <div class="step-item">
+                        <div class="step-icon">💳</div>
+                        <div class="step-info">
+                            <strong>Process Payment</strong>
+                            <p>Payment is processed successfully</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section" id="comparison">
+        <div class="section-header">
+            <h2><i class="fas fa-code-branch"></i> Solutions</h2>
+            <p>Escape Callback Hell with Modern Patterns</p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-box bad">
+                <div class="comparison-header">
+                    <i class="fas fa-times-circle"></i>
+                    <h4>❌ Callback Hell</h4>
+                </div>
+                <div class="code-block">
+<pre>function order() {
+  step1(function(res1) {
+    step2(res1, function(res2) {
+      step3(res2, function(res3) {
+        step4(res3, function(res4) {
+          console.log("Done!");
+        });
+      });
+    });
+  });
+}</pre>
+                </div>
+                <p class="comparison-note">❌ Hard to read and maintain</p>
+            </div>
+
+            <div class="comparison-box medium">
+                <div class="comparison-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h4>🟡 Promises</h4>
+                </div>
+                <div class="code-block">
+<pre>function order() {
+  return step1()
+    .then(res1 => step2(res1))
+    .then(res2 => step3(res2))
+    .then(res3 => step4(res3))
+    .then(res4 => console.log("Done!"))
+    .catch(err => console.error(err));
+}</pre>
+                </div>
+                <p class="comparison-note">🟡 Better, but still chained</p>
+            </div>
+
+            <div class="comparison-box good">
+                <div class="comparison-header">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>✅ Async/Await</h4>
+                </div>
+                <div class="code-block">
+<pre>async function order() {
+  try {
+    const res1 = await step1();
+    const res2 = await step2(res1);
+    const res3 = await step3(res2);
+    const res4 = await step4(res3);
+    console.log("Done!");
+  } catch(err) {
+    console.error(err);
+  }
+}</pre>
+                </div>
+                <p class="comparison-note">✅ Clean, readable, maintainable</p>
+            </div>
+        </div>
+
+        <div class="best-practices">
+            <h4><i class="fas fa-star"></i> Best Practices</h4>
+            <ul>
+                <li><i class="fas fa-check"></i> Always use <strong>async/await</strong> for modern JavaScript</li>
+                <li><i class="fas fa-check"></i> Use <strong>Promises</strong> when you need chain operations</li>
+                <li><i class="fas fa-check"></i> Handle errors with <strong>try/catch</strong> blocks</li>
+                <li><i class="fas fa-check"></i> Use <strong>Promise.all()</strong> for parallel operations</li>
+                <li><i class="fas fa-check"></i> Avoid deeply nested callbacks at all costs</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>CallbackHub</h4>
+                <p>Learn modern JavaScript async patterns</p>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Promises MDN</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Async/Await MDN</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> JavaScript.info</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://github.com/Pankaj-Babu001"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/PankajKumar477"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/pankaj-kumar-0a98b5302/"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CallbackHub. Made with <i class="fas fa-heart"></i> for developers.</p>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

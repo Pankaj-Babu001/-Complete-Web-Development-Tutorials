@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Modern To-Do List</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="background-animation">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
+<div class="container">
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">✓</span>
+            <h1>TaskFlow</h1>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="totalTasks">0</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="completedTasks">0</span>
+                <span class="stat-label">Done</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="input-section">
+        <form id="taskForm">
+            <div class="input-wrapper">
+                <span class="input-icon">📝</span>
+                <input
+                        type="text"
+                        id="taskInput"
+                        placeholder="What needs to be done today?"
+                        autocomplete="off"
+                >
+                <button type="submit" class="add-btn">
+                    <span class="btn-text">Add Task</span>
+                    <span class="btn-icon">+</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="tab active" data-filter="all">All Tasks</button>
+        <button class="tab" data-filter="active">Active</button>
+        <button class="tab" data-filter="completed">Completed</button>
+    </div>
+
+    <div id="allTask" class="task-list"></div>
+
+    <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🎯</div>
+        <h3>No tasks yet!</h3>
+        <p>Add your first task to get started on your productive day</p>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology Insights - Discover Your Destiny</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="stars"></div>
+<div class="twinkling"></div>
+
+<div class="container">
+    <div class="header">
+        <div class="zodiac-circle">
+            <span class="zodiac-symbol">✨</span>
+        </div>
+        <h1>Astrology Insights</h1>
+        <p class="subtitle">Discover your cosmic destiny</p>
+    </div>
+
+    <form id="astroForm">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="name">
+                    <span class="icon">👤</span>
+                    First Name
+                </label>
+                <input type="text" id="name" name="name" placeholder="Enter your first name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="surname">
+                    <span class="icon">👥</span>
+                    Surname
+                </label>
+                <input type="text" id="surname" name="surname" placeholder="Enter your surname" required>
+            </div>
+        </div>
+
+        <div class="date-section">
+            <p class="section-title">
+                <span class="icon">🎂</span>
+                Date of Birth
+            </p>
+            <div class="date-grid">
+                <div class="form-group">
+                    <label for="day">Day</label>
+                    <input type="number" id="day" name="day" min="1" max="31" placeholder="DD" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="month">Month</label>
+                    <input type="number" id="month" name="month" min="1" max="12" placeholder="MM" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="number" id="year" name="year" min="1900" max="2025" placeholder="YYYY" required>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            <span class="btn-text">Reveal My Destiny</span>
+            <span class="btn-icon">🔮</span>
+        </button>
+    </form>
+
+    <div class="result-container" id="resultContainer">
+        <div class="result-header">
+            <span class="result-icon">🌟</span>
+            <h2>Your Cosmic Reading</h2>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

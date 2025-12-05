@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Quiz Challenge - Ultimate Edition</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- Animated Background -->
+<div class="cricket-bg">
+    <div class="cricket-ball"></div>
+    <div class="cricket-ball"></div>
+    <div class="cricket-ball"></div>
+    <div class="stadium-lights"></div>
+    <div class="stadium-lights"></div>
+</div>
+
+<!-- Welcome Screen -->
+<div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-content">
+        <div class="welcome-trophy">🏏</div>
+        <h1 class="welcome-title">Cricket Quiz Challenge</h1>
+        <p class="welcome-subtitle">Ultimate Cricket Knowledge Test</p>
+        <div class="quiz-info">
+            <div class="info-item">
+                <span class="info-icon">📝</span>
+                <span>25 Questions</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⏱️</span>
+                <span>No Time Limit</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎯</span>
+                <span>Multiple Choice</span>
+            </div>
+        </div>
+        <button class="start-btn" id="startBtn">
+            <span>Start Quiz</span>
+            <span class="btn-arrow">→</span>
+        </button>
+    </div>
+</div>
+
+<div class="container" id="quizContainer">
+    <!-- Header Section -->
+    <header class="quiz-header">
+        <div class="header-top">
+            <div class="logo">
+                <span class="logo-icon">🏆</span>
+                <h1>Cricket Quiz</h1>
+            </div>
+            <div class="timer-badge">
+                <span class="timer-icon">⏱️</span>
+                <span id="timer">00:00</span>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="currentQ">0</span>
+                <span class="stat-label">Current</span>
+            </div>
+            <div class="stat-divider">/</div>
+            <div class="stat-item">
+                <span class="stat-number" id="totalQ">25</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="answered">0</span>
+                <span class="stat-label">Answered</span>
+            </div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <span class="progress-text" id="progressText">0%</span>
+        </div>
+    </header>
+
+    <!-- Navigation Dots -->
+    <div class="question-nav" id="questionNav"></div>
+
+    <!-- Quiz Form -->
+    <form id="quizForm">
+        <div class="questions-container" id="questionsContainer">
+            <!-- Questions will be dynamically inserted here -->
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button type="button" class="nav-btn prev-btn" id="prevBtn" disabled>
+                <span>←</span>
+                <span>Previous</span>
+            </button>
+            <button type="button" class="nav-btn next-btn" id="nextBtn">
+                <span>Next</span>
+                <span>→</span>
+            </button>
+            <button type="submit" class="submit-btn" id="submitBtn" style="display: none;">
+                <span class="submit-icon">✓</span>
+                <span>Submit Quiz</span>
+            </button>
+        </div>
+    </form>
+
+    <!-- Result Section -->
+    <div class="result-container" id="resultContainer">
+        <div class="result-card">
+            <div class="result-confetti" id="confettiContainer"></div>
+            <div class="result-icon" id="resultIcon">🎉</div>
+            <h2 class="result-title" id="resultTitle">Quiz Complete!</h2>
+
+            <div class="score-display-container">
+                <div class="score-circle">
+                    <svg class="score-ring" width="220" height="220">
+                        <defs>
+                            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00B894;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00A86B;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="score-ring-bg" cx="110" cy="110" r="90"></circle>
+                        <circle class="score-ring-fill" id="scoreRing" cx="110" cy="110" r="90"></circle>
+                    </svg>
+                    <div class="score-text">
+                        <span class="score-number" id="scoreNumber">0</span>
+                        <span class="score-label">/ 25</span>
+                    </div>
+                </div>
+
+                <div class="score-stats">
+                    <div class="score-stat correct">
+                        <span class="stat-icon">✓</span>
+                        <div>
+                            <div class="stat-value" id="correctCount">0</div>
+                            <div class="stat-name">Correct</div>
+                        </div>
+                    </div>
+                    <div class="score-stat incorrect">
+                        <span class="stat-icon">✗</span>
+                        <div>
+                            <div class="stat-value" id="incorrectCount">0</div>
+                            <div class="stat-name">Incorrect</div>
+                        </div>
+                    </div>
+                    <div class="score-stat time">
+                        <span class="stat-icon">⏱️</span>
+                        <div>
+                            <div class="stat-value" id="timeTaken">0:00</div>
+                            <div class="stat-name">Time Taken</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="result-message" id="resultMessage"></p>
+            <p class="result-percentage" id="resultPercentage"></p>
+
+            <div class="result-details" id="resultDetails"></div>
+
+            <div class="result-actions">
+                <button class="retry-btn" id="retryBtn">
+                    <span>🔄</span>
+                    <span>Try Again</span>
+                </button>
+                <button class="share-btn" id="shareBtn">
+                    <span>📤</span>
+                    <span>Share Score</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

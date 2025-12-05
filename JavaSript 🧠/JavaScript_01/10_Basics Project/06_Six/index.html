@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic Countdown Timer</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="background-animation"></div>
+<div class="container">
+    <div class="olympic-rings">
+        <div class="ring blue"></div>
+        <div class="ring yellow"></div>
+        <div class="ring black"></div>
+        <div class="ring green"></div>
+        <div class="ring red"></div>
+    </div>
+
+    <h1 class="main-title">
+        <span class="title-line">Olympic Games</span>
+        <span class="title-line highlight">Los Angeles 2028's</span>
+    </h1>
+
+    <div class="countdown-grid">
+        <div class="time-card">
+            <div class="time-value" id="days">0</div>
+            <div class="time-label">Days</div>
+        </div>
+        <div class="time-card">
+            <div class="time-value" id="hours">0</div>
+            <div class="time-label">Hours</div>
+        </div>
+        <div class="time-card">
+            <div class="time-value" id="minutes">0</div>
+            <div class="time-label">Minutes</div>
+        </div>
+        <div class="time-card">
+            <div class="time-value" id="seconds">0</div>
+            <div class="time-label">Seconds</div>
+        </div>
+    </div>
+
+    <div class="event-info">
+        <p class="event-date">📅 July 14 - 30, 2028</p>
+        <p class="event-location">📍 Los Angeles, California, USA</p>
+    </div>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Clock</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="clock-wrapper">
+        <h1 class="title">⏰ Time Now</h1>
+
+        <div class="date-display">
+            <span id="date">Sunday, Nov 2, 2025</span>
+        </div>
+
+        <div class="clock-container">
+            <svg class="clock-svg" viewBox="0 0 400 400" width="400" height="400">
+                <!-- Background circles -->
+                <circle cx="200" cy="200" r="180" class="track-bg" stroke-width="12"/>
+                <circle cx="200" cy="200" r="150" class="track-bg" stroke-width="10"/>
+                <circle cx="200" cy="200" r="120" class="track-bg" stroke-width="8"/>
+
+                <!-- Progress circles -->
+                <circle cx="200" cy="200" r="180" class="progress-circle hours-circle" stroke-width="12" id="hoursCircle"/>
+                <circle cx="200" cy="200" r="150" class="progress-circle minutes-circle" stroke-width="10" id="minutesCircle"/>
+                <circle cx="200" cy="200" r="120" class="progress-circle seconds-circle" stroke-width="8" id="secondsCircle"/>
+            </svg>
+
+            <div class="center-display">
+                <div class="main-time">
+                    <span id="hours">12</span>
+                    <span class="colon">:</span>
+                    <span id="minutes">00</span>
+                    <span class="colon">:</span>
+                    <span id="seconds">00</span>
+                </div>
+                <div class="time-labels">
+                    <span class="label">HOURS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="period-badge" id="periodBadge">
+                <span id="period">PM</span>
+            </div>
+            <div class="timezone">
+                <span>Local Time</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="formatBtn" class="control-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                <span>24H</span>
+            </button>
+            <button id="themeBtn" class="control-btn active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <span>Theme</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="./index.js"></script>
+</body>
+</html>
