@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Wendy One", sans-serif;
+    background: #0b0d10;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+    align-items: center;
+    gap: 3rem;
+    margin: 40px;
+    color: #000;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.card {
+    background: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.demo {
+    height: 400px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Linear Gradient */
+.linear {
+    background: linear-gradient(45deg, #ee0979, #ff6a00, #ffdd00, #00c9ff);
+}
+
+/* Radial Gradient */
+.radial {
+    background: radial-gradient(circle, #ee0979 0%, #ff6a00 25%, #ffdd00 75%, #00c9ff 100%);
+}
+
+/* Conic Gradient */
+.conic {
+    background: conic-gradient(from 0deg at 50% 60%, #ee0979, #ff6a00, #ffdd00, #00c9ff, #ee0979);
+}
+
+/* Repeating Gradient */
+.repeating {
+    background: repeating-linear-gradient(45deg, #ee0979 0px 25px, #ff6a00 25px 50px, #ffdd00 50px 75px, #00c9ff 75px 100px);
+}
+
+/* Animated Gradient */
+.animated {
+    height: 400px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(270deg, #ff6a00, #ffd800, #00c9ff, #7b61ff, #ee0979, #ff6a00);
+    background-size: 300% 300%;
+    animation: gradientShift 5s linear infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Another Way Animated a Gradient */
+@keyframes gradientShift {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Gradient Overlay on Image */
+.hero {
+    height: 400px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .6)),
+        url('https://picsum.photos/600/400?blur=2');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Gradient Text */
+.gradient-text {
+    font-size: 9rem;
+    background: linear-gradient(90deg, #ee0979, #ff6a00, #ffdd00, #00c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Gradient Border */
+button {
+    padding: 1em 2em;
+    background: #dfdfdf;
+    border-radius: 1000px;
+    font-family: "Wendy One", sans-serif;
+    font-size: 2.5rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1000px;
+    padding: 5px;
+    background-image: linear-gradient(to bottom right, #ff6a00, #ee0979);
+    z-index: -1;
+}
+
+button:hover {
+    color: #fff;
+    box-shadow: 40px 0 100px #ff6a00, -40px 0 100px #ee0979;
+    z-index: 0;
+}

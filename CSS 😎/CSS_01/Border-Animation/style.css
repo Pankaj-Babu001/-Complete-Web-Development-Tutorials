@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e2f;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    width: 300px;
+    background: #000120;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.card h2 {
+    color: #ececec;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+}
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background-image: conic-gradient(from var(--angle), #d11149, #e68aff, #ff4800, #11ebff, #cdff58, #d11149);
+    z-index: -1;
+    padding: 3px;
+    border-radius: 5px;
+    animation: spin 3s linear infinite;
+}
+
+.card::after {
+    filter: blur(1.5rem);
+    opacity: 0.7;
+    animation: spin 3s linear infinite, blur-effect 3s linear infinite;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+@keyframes blur-effect {
+    from {
+        filter: blur(1.5rem);
+    }
+
+    to {
+        filter: blur(1.4rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 90vw;
+        height: auto;
+    }
+}
